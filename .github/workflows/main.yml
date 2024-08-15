@@ -13,12 +13,37 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: googleapis/release-please-action@v4
+      - name: Release Please
+        uses: googleapis/release-please-action@v4
+        id: release
         with:
-          # this assumes that you have created a personal access token
-          # (PAT) and configured it as a GitHub action secret named
-          # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
-          # this is a built-in strategy in release-please, see "Action Inputs"
-          # for more options
           release-type: node
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Install dependencies
+        run: npm install
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Build artifacts
+        if: ${{ steps.release }}
+        run: npm run build
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: map-scanner
+          path: |
+            packages/map-scanner-script/dist/script.min.user.js
+            packages/map-scanner-viewer/out
+        if: ${{ steps.release.outputs.release_created }}
