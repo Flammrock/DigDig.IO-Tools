@@ -1,0 +1,52 @@
+<!-------------------------------------------------------------------,
+| Copyright (c) 2024 Flammrock                                       |
+|                                                                    |
+| This source code is licensed under the MIT license found in the    |
+| LICENSE file in the root directory of this source tree.            |
+'-------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>DigDig.IO Viewer</title>
+  </head>
+  <body>
+    <div id="viewer-controls" class="controls hide">
+      <div class="container">
+        <div class="control">
+          <i style="--2: red;" class="cf-duotone cf-mouse-left"></i>
+          <span>Hold and move to start selection</span>
+        </div>
+        <div class="control">
+          <i style="--2: red;" class="cf-duotone cf-mouse-right"></i>
+          <span>Hold and move to pan</span>
+        </div>
+        <div class="control">
+          <i style="--2: red;" class="cf-duotone cf-mouse-wheel"></i>
+          <span>Scroll to zoom in/out</span>
+        </div>
+        <div class="control">
+          <i style="--1: rgb(182, 177, 177); --2: white;" class="cf-duotone cf-keyboard-key"></i>
+          <span class="key">H</span>
+          <span>Show/Hide debugging information</span>
+        </div>
+        <div class="control">
+          <i style="--1: rgb(182, 177, 177); --2: white;" class="cf-duotone cf-keyboard-key"></i>
+          <span class="key">P</span>
+          <span>Reset camera</span>
+        </div>
+        <div class="control">
+          <i style="--1: rgb(182, 177, 177); --2: white;" class="cf-duotone cf-keyboard-key"></i>
+          <span class="long-key">Del</span>
+          <span>Delete the selected chunks</span>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="group-button">
+          <div id="viewer-controls-ok" class="btn magic-border">OK</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

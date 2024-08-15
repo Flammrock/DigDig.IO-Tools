@@ -1,0 +1,10 @@
+<!--
+| Copyright (c) 2024 Flammrock
+|
+| This source code is licensed under the MIT license found in the
+| LICENSE file in the root directory of this source tree.
+-->
+<svg width="500" height="500" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 35 20 c -8 0 -7 3 -10 5 l -5 5 l 0 45 c 0 3 2 5 5 5 l 50 0 c 3 0 5 -2 5 -5 l 0 -45 l -5 -5 c -3 -2 -2 -5 -10 -5 Z" stroke-width="2"/>
+  <rect x="26" y="20" width="47.7" height="48" rx="7" ry="7" stroke-width="1.3" fill="#222"/>
+</svg>

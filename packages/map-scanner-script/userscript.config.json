@@ -1,0 +1,16 @@
+{
+  "header": {
+    "name": "DigDig.IO Map Scanner",
+    "match": "*://digdig.io/*",
+    "runAt": "document-start",
+    "grant": "none",
+    "namespace": "flammrock",
+    "icon": "https://www.google.com/s2/favicons?domain=digdig.io"
+  },
+  "injectFromCurrentPackage": {
+    "version": true,
+    "author": true,
+    "description": true,
+    "license": true
+  }
+}

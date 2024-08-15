@@ -1,0 +1,261 @@
+{
+  "allOf": [
+    {
+      "$ref": "#/definitions/Partial<Header>"
+    },
+    {
+      "type": "object",
+      "additionalProperties": {}
+    }
+  ],
+  "definitions": {
+    "Partial<Header>": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the script.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Partial<PermissiveObject<{default:string;}>>"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "namespace": {
+          "description": "The namespace of the script.",
+          "type": "string"
+        },
+        "copyright": {
+          "description": "A copyright statement shown at the header of the script's editor right below the script name.",
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "version": {
+          "description": "The script version. This is used for the update check\nand needs to be increased at every update.\n\nIn this list the next entry is considered to be a higher\nversion number, eg: `Alpha-v1` < `Alpha-v2` and `16.4` == `16.04`\n\n- `Alpha-v1`\n- `Alpha-v2`\n- `Alpha-v10`\n- `Beta`\n- `0.5pre3`\n- `0.5prelimiary`\n- `0.6pre4`\n- `0.6pre5`\n- `0.7pre4`\n- `0.7pre10`\n- `1.-1`\n- `1 == 1. == 1.0 == 1.0.0`\n- `1.1a`\n- `1.1aa`\n- `1.1ab`\n- `1.1b`\n- `1.1c`\n- `1.1.-1`\n- `1.1 == 1.1.0 == 1.1.00`\n- `1.1.1.1.1`\n- `1.1.1.1.2`\n- `1.1.1.1`\n- `1.10.0-alpha`\n- `1.10 == 1.10.0`\n- `1.11.0-0.3.7`\n- `1.11.0-alpha`\n- `1.11.0-alpha.1`\n- `1.11.0-alpha+1`\n- `1.12+1 == 1.12+1.0`\n- `1.12+1.1 == 1.12+1.1.0`\n- `1.12+2`\n- `1.12+2.1`\n- `1.12+3`\n- `1.12+4`\n- `1.12`\n- `2.0`\n- `16.4 == 16.04`\n- `2023-08-17.alpha`\n- `2023-08-17`\n- `2023-08-17_14-04 == 2023-08-17_14-04.0`\n- `2023-08-17+alpha`\n- `2023-09-11_14-0`",
+          "type": "string"
+        },
+        "description": {
+          "description": "A short significant description.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Partial<PermissiveObject<{default:string;}>>"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "icon": {
+          "description": "The script icon in low res.",
+          "type": "string"
+        },
+        "icon64": {
+          "description": "This scripts icon in 64x64 pixels. If this tag, but &commat;icon is given the &commat;icon\nimage will be scaled at some places at the options page.",
+          "type": "string"
+        },
+        "grant": {
+          "description": "&commat;grant is used to whitelist `GM_*` and `GM.*` functions, the `unsafeWindow`\nobject and some powerful `window` functions.\nIf set to `null`, the sandbox is disabled. In this mode no `GM_*` function\nbut the `GM_info` property will be available.\nIf no &commat;grant tag is given an empty list is assumed. However this different from using `null`.\n\nHere, `null` is used to represent the 'none' option (e.g. &commat;grant none).",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          ]
+        },
+        "author": {
+          "description": "The scripts author.",
+          "type": "string"
+        },
+        "homepage": {
+          "description": "The authors homepage that is used at the options page to link from the\nscripts name to the given page. Please note that if the &commat;namespace tag\nstarts with `http://` its content will be used for this too.",
+          "type": "string"
+        },
+        "antifeature": {
+          "description": "This tag allows script developers to disclose whether they monetize their scripts.\nIt is for example required by [GreasyFork](https://greasyfork.org/).\n\nSyntax: &lt;tag&gt; &lt;type&gt; &lt;description&gt;\n\n&lt;type&gt; can have the following values:\n- `ads`\n- `tracking`\n- `miner`",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/I18NValue<string>"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "require": {
+          "description": "Points to a JavaScript file that is loaded and executed before the script\nitself starts running. Note: the scripts loaded via &commat;require and their \"use strict\"\nstatements might influence the userscript's strict mode!",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "resource": {
+          "description": "Preloads resources that can by accessed via `GM_getResourceURL` and `GM_getResourceText` by the script.\n\nSyntax: &lt;tag&gt; &lt;type&gt; &lt;uri&gt;",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SingleValue<TagResource>"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "include": {
+          "description": "The pages on that a script should run. Multiple tag instances are allowed.\n&commat;include doesn't support the URL hash parameter. You have to match\nthe path without the hash parameter and make use of `window.onurlchange`\n\n**Note**: When writing something like `*://tmnk.net/*` many script developers\nexpect the script to run at `tmnk.net` only, but this is not the case.\nIt also runs at `https://example.com/?http://tmnk.net/` as well.\n\nTherefore Tampermonkey interprets &commat;includes that contain a `://` a\nlittle bit like &commat;match. Every `*` before `://` only matches\neverything except `:` characters to makes sure only the URL scheme is matched.\nAlso, if such an &commat;include contains a `/` after `://`, then everything between\nthose strings is treat as host, matching everything except `/` characters.\nThe same applies to `*` directly following `://`.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "match": {
+          "description": "In Tampermonkey, the &commat;match directive is used to specify the web pages that\nyour script should run on. The value of &commat;match should be a URL pattern that\nmatches the pages you want your script to run on. Here are the parts of\nthe URL pattern that you'll need to set:\n\n``<protocol>://<domain><path>``\n\n- protocol - This is the first part of the URL, before the colon.\n  It specifies the protocol that the page uses, such as `http` or `https`.\n  `*` matches both.\n- domain - This is the second part of the URL, after the protocol and two slashes.\n  It specifies the domain name of the website, such as `tmnk.com`. You can use the\n  wildcard character this way `*.tmnk.net` to match tmnk.net and any sub-domain of it like `www.tmnk.net`.\n- path - This is the part of the URL that comes after the domain name, and may include\n  additional subdirectories or filenames. You can use the wildcard\n  character `*` to match any part of the path.\n\nPlease check this documentation to get more information about match pattern.\n\n**Note**: the `<all_urls>` statement is not yet supported and the scheme part also accepts `http*://`.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "exclude": {
+          "description": "Exclude URLs even it they are included by &commat;include or &commat;match.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "runAt": {
+          "description": "Defines the moment the script is injected. In opposition to other script handlers,\n&commat;run-at defines the first possible moment a script wants to run.\nThis means it may happen, that a script that uses the &commat;require tag may be executed after\nthe document is already loaded, cause fetching the required script took that long. Anyhow, all\nDOMNodeInserted and DOMContentLoaded events that happended after the given injection moment are\ncached and delivered to the script when it is injected.\n\n- `'document-start'`: The script will be injected as fast as possible.\n- `'document-body'`: The script will be injected if the body element exists.\n- `'document-end'`: The script will be injected when or after the DOMContentLoaded event was dispatched.\n- `'document-idle'`: The script will be injected after the DOMContentLoaded event was dispatched.\n                   This is the default value if no &commat;run-at tag is given.\n- `'context-menu'`: The script will be injected if it is clicked at the browser context menu.\n                  Note: all &commat;include and &commat;exclude statements will be ignored if this value is used,\n                  but this may change in the future.",
+          "type": "string"
+        },
+        "sandbox": {
+          "description": "&commat;sandbox allows Tampermonkey to decide where the userscript is injected:\n\n`MAIN_WORLD` - the page\n`ISOLATED_WORLD` - the extension's content script\n`USERSCRIPT_WORLD` - a special context created for userscripts\n\nBut instead of specifying an environment, the userscript can express what exactly it\nneeds access to. &commat;sandbox supports three possible arguments:\n\n- `'raw'`: \"Raw\" access means that a script for compatibility reasons always needs to\nrun in page context, the `MAIN_WORLD`. At the moment this mode is the default if &commat;sandbox\nis omitted. If injection into the `MAIN_WORLD` is not possible (e.g. because of a CSP)\nthe userscript will be injected into other (enabled) sandboxes according to the\norder of this list.\n\n- `'JavaScript'`: \"JavaScript\" access mode means that this script needs access to\n`unsafeWindow`. At Firefox a special context, the `USERSCRIPT_WORLD`, is created which also\nbypasses existing CSPs. It however, might create new issues since now cloneInto and exportFunction\nare necessary to share objects with the page. raw mode is used as fallback at other browsers.\n\n- `'DOM'`: Use this access mode if the script only needs DOM and no direct `unsafeWindow` access.\nIf enabled these scripts are executed inside the extension context, the `ISOLATED_WORLD`, or at\nany other enabled context otherwise, because they all grant DOM access.",
+          "type": "string"
+        },
+        "connect": {
+          "description": "This tag defines the domains (no top-level domains) including subdomains which\nare allowed to be retrieved by `GM_xmlhttpRequest`.\n\nCan be:\n- a domain name like `example.com` (this will also allow all subdomains).\n- a subdomain name like `subdomain.example.com`.\n- `self` to whitelist the domain the script is currently running at.\n- `localhost` to access the localhost.\n- an IP address like `1.2.3.4`.\n- `*`\n\nIf it's not possible to declare all domains a userscript might connect to then it's\na good practice to do the following:\n\n1. Declare _all known_ or at least _all common_ domains that might be connected by\nthe script to avoid the confirmation dialog for most users.\nAdditionally add &commat;connect `*` to the script to allow Tampermonkey to offer an\n\"Always allow all domains\" button.\n2. Users can also whitelist all requests by adding `*` to the user domain whitelist\nat the script settings tab.\n\n**Notes**:\n\n- Both, the initial **and** the final URL will be checked!\n- For backward compatibility to Scriptish &commat;domain tags are interpreted as well.\n- Multiple tag instances are allowed.",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "noframes": {
+          "description": "This tag makes the script running on the main pages, but not at iframes.",
+          "type": "boolean"
+        },
+        "updateURL": {
+          "description": "An update URL for the userscript.\n\n**Note**: a &commat;version tag is required to make update checks work.",
+          "type": "string"
+        },
+        "downloadURL": {
+          "description": "Defines the URL where the script will be downloaded from when an update was detected.\nIf the value _none_ is used, then no update check will be done.",
+          "type": "string"
+        },
+        "supportURL": {
+          "description": "Defines the URL where the user can report issues and get personal support.",
+          "type": "string"
+        },
+        "webRequest": {
+          "description": "&commat;webRequest takes a JSON document that matches `GM_webRequest`'s `rule` parameter.\nIt allows the rules to apply even before the userscript is loaded.",
+          "type": "string"
+        },
+        "unwrap": {
+          "description": "Injects the userscript without any wrapper and sandbox into the page,\nwhich might be useful for Scriptlets.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Partial<PermissiveObject<{default:string;}>>": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "string"
+        }
+      }
+    },
+    "I18NValue<string>": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Partial<PermissiveObject<{default:string;}>>"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "SingleValue<TagResource>": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "string"
+            },
+            "uri": {
+              "type": "string",
+              "const": "string"
+            }
+          },
+          "required": [
+            "type",
+            "uri"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

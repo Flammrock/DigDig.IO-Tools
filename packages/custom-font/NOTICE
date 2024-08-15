@@ -1,0 +1,6 @@
+This project uses code from the following open-source project:
+
+- **Fantasticon**: A tool for creating icon fonts from SVG files.
+  - URL: https://github.com/tancredi/fantasticon
+  - License: MIT License
+  - Description: Fantasticon is used for generating icon fonts from SVG files.

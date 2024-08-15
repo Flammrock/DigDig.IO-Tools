@@ -1,0 +1,20 @@
+<!--
+| Copyright (c) 2024 Flammrock
+|
+| This source code is licensed under the MIT license found in the
+| LICENSE file in the root directory of this source tree.
+-->
+<svg width="500" height="500" viewBox="0 0 100 100"
+	xmlns="http://www.w3.org/2000/svg">
+	<!-- Bottom part -->
+	<path d="M 20 46 l 60 0 l 0 20 c 0 40 -60 40 -60 0"/>
+
+	<!-- Left Button -->
+	<path d="M 20 45 c 0 -40 0 -40 29.5 -40 l 0 10 c -4.5 0 -4.5 3 -4.5 8 l 0 6 c -0.5 8 3 8 4.5 8 l 0 8" fill="red"/>
+
+	<!-- Right Button -->
+	<path d="M 80 45 c 0 -40 0 -40 -29.5 -40 l 0 10 c 4.5 0 4.5 3 4.5 8 l 0 6 c 0.5 8 -3 8 -4.5 8 l 0 8"/>
+
+	<!-- Scroll Wheel -->
+	<rect x="46" y="16" width="8" height="20" rx="10" ry="4" />
+</svg>

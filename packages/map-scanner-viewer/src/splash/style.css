@@ -1,0 +1,92 @@
+/*------------------------------------------------------------------*\
+| Copyright (c) 2024 Flammrock                                       |
+|                                                                    |
+| This source code is licensed under the MIT license found in the    |
+| LICENSE file in the root directory of this source tree.            |
+\*------------------------------------------------------------------*/
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: #444444;
+  background-image: url(./images/splash-screen.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  user-select: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.splash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+}
+.bar-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: 60px;
+}
+.bar {
+  display: inline-flex;
+  z-index: 100;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111111;
+}
+.bar-spike {
+  display: inline-block;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #111111;
+  transform-origin: 100% 0%;
+  transform: rotate(-45deg) scale(2);
+}
+.bar-content {
+margin: 40px;
+}
+.name {
+  font: 18px Ubuntu;
+}
+.version {
+  font: 10px Ubuntu;
+}
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  --c:no-repeat radial-gradient(farthest-side,#dddddd 92%,#0000);
+  background:
+    var(--c) 50%  0,
+    var(--c) 50%  100%,
+    var(--c) 100% 50%,
+    var(--c) 0    50%;
+  background-size: 10px 10px;
+  animation: l18 1s infinite;
+  position: relative;
+}
+.loader::before {
+  content:"";
+  position: absolute;
+  inset:0;
+  margin: 3px;
+  background: repeating-conic-gradient(#0000 0 35deg,#dddddd 0 90deg);
+  mask: radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 0);
+  border-radius: 50%;
+}
+@keyframes l18 {
+  100%{transform: rotate(.5turn)}
+}

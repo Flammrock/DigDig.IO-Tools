@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "{{ name }}";
+  src: {{{ fontSrc }}};
+}
+
+{{# if selector }}
+{{ tag }}.{{ selector }}:before,
+{{ tag }}.{{ selector }}:after {
+{{ else }}
+{{ tag }}[class^="{{prefix}}-"]:before,
+{{ tag }}[class*=" {{prefix}}-"]:before,
+{{ tag }}[class^="{{prefix}}-"]:after,
+{{ tag }}[class*=" {{prefix}}-"]:after {
+{{/ if }}
+  display: inline-block;
+  font-family: "{{ name }}" !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+{{# each codepoints }}
+{{# if (endsWith @key "t1") }}
+{{# if ../selector }}
+{{ ../tag }}.{{ ../selector }}.{{ ../prefix }}-{{ slice @key 0 -3 }}:after {
+{{ else }}
+{{ ../tag }}.{{ ../prefix }}-{{ slice @key 0 -3 }}:after {
+{{/ if }}
+  content: "\\{{ codepoint this }}";
+  color: var(--1, inherit);
+}
+{{/ if }}
+{{# if (endsWith @key "t2") }}
+{{# if ../selector }}
+{{ ../tag }}.{{ ../selector }}.{{ ../prefix }}-{{ slice @key 0 -3 }}:before {
+{{ else }}
+{{ ../tag }}.{{ ../prefix }}-{{ slice @key 0 -3 }}:before {
+{{/ if }}
+  position: absolute;
+  content: "\\{{ codepoint this }}";
+  color: var(--2, red);
+}
+{{/ if }}
+{{/ each }}

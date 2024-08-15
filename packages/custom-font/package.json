@@ -1,0 +1,21 @@
+{
+  "name": "custom-font",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generate a font with custom icons",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js"
+  },
+  "keywords": [
+    "font",
+    "icons"
+  ],
+  "author": "Flammrock",
+  "license": "MIT",
+  "devDependencies": {
+    "@twbs/fantasticon": "^3.0.0",
+    "cli-color": "^2.0.4",
+    "svgson": "^5.3.1"
+  }
+}
