@@ -29,7 +29,10 @@ jobs:
           node-version: 'latest'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+            sudo apt update                                                                         # for node-canvas
+            sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev   # for node-canvas
+            npm install
 
       - name: Build artifacts
         run: npm run build
