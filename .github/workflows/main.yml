@@ -11,7 +11,10 @@ name: release-please
 
 jobs:
   release-please:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Release Please
         uses: googleapis/release-please-action@v4
@@ -28,19 +31,53 @@ jobs:
         with:
           node-version: 'latest'
 
-      - name: Install dependencies
+      - name: Install dependencies [linux]
+        if: matrix.os == 'ubuntu-latest' 
         run: |
-            sudo apt update                                                                         # for node-canvas
-            sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev   # for node-canvas
-            npm install
+            sudo apt update
+
+            # for node-canvas
+            sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev
+
+            # for build rpm in ubuntu ( https://stackoverflow.com/questions/59346604/electron-forge-make-wont-build )
+            sudo apt install -y rpm
+
+      - name: Install dependencies [macos]
+        if: matrix.os == 'macos-latest' 
+        run: |
+            # for node-canvas
+            brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12
+
+      - name: Install NPM dependencies
+        run: npm install
 
       - name: Build artifacts
         run: npm run build
 
-      - name: Archive artifacts
+      - name: Archive artifacts [linux]
         uses: actions/upload-artifact@v4
+        if: matrix.os == 'ubuntu-latest'
         with:
-          name: map-scanner
+          name: map-scanner-linux-x64
           path: |
             packages/map-scanner-script/dist/script.min.user.js
-            packages/map-scanner-viewer/out
+            packages/map-scanner-viewer/out/deb/x64/*.deb
+            packages/map-scanner-viewer/out/rpm/x64/*.rpm
+
+      - name: Archive artifacts [macos]
+        uses: actions/upload-artifact@v4
+        if: matrix.os == 'macos-latest'
+        with:
+          name: map-scanner-macos-x64
+          path: |
+            packages/map-scanner-script/dist/script.min.user.js
+            packages/map-scanner-viewer/out/make/zip/darwin/x64/*.zip
+
+      - name: Archive artifacts [windows]
+        uses: actions/upload-artifact@v4
+        if: matrix.os == 'windows-latest'
+        with:
+          name: map-scanner-windows-x64
+          path: |
+            packages/map-scanner-script/dist/script.min.user.js
+            packages/map-scanner-viewer/out/make/squirrel.windows/x64/*.exe

@@ -40,7 +40,7 @@ const config: ForgeConfig = {
     icon: iconPath
   },
   rebuildConfig: {},
-  makers: [/*new MakerSquirrel({}), */ new MakerZIP({}, ['win32', 'darwin']), new MakerRpm({}), new MakerDeb({})],
+  makers: [/*new MakerSquirrel({}), */ new MakerZIP({}, ['win32', 'darwin']), new MakerDeb({}), new MakerRpm({})],
   plugins: [
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({
