@@ -46,7 +46,7 @@ jobs:
         if: matrix.os == 'macos-latest' 
         run: |
             # for node-canvas
-            brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12
+            brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12 python-setuptools
 
       - name: Install NPM dependencies
         run: |
