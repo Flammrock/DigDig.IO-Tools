@@ -6,7 +6,7 @@
 \*------------------------------------------------------------------*/
 
 import type { ForgeConfig } from '@electron-forge/shared-types'
-///////// import { MakerSquirrel } from '@electron-forge/maker-squirrel'
+import { MakerSquirrel } from '@electron-forge/maker-squirrel'
 import { MakerZIP } from '@electron-forge/maker-zip'
 import { MakerDeb } from '@electron-forge/maker-deb'
 import { MakerRpm } from '@electron-forge/maker-rpm'
@@ -14,33 +14,27 @@ import { AutoUnpackNativesPlugin } from '@electron-forge/plugin-auto-unpack-nati
 import { WebpackPlugin } from '@electron-forge/plugin-webpack'
 import { FusesPlugin } from '@electron-forge/plugin-fuses'
 import { FuseV1Options, FuseVersion } from '@electron/fuses'
-import fs from 'fs'
 import path from 'path'
 
 import { mainConfig } from './webpack.main.config'
 import { rendererConfig } from './webpack.renderer.config'
 
-const iconFormat: Record<string, string> = {
-  win32: '.ico',
-  darwin: '.icns',
-  linux: '.png'
-}
-const iconFileParts =
-  typeof iconFormat[process.platform] !== 'undefined' ? [process.platform, 'icon'] : ['png', 'icon-256x256']
-const iconPath = path.resolve(__dirname, 'src', 'icons', ...iconFileParts)
-const ext = typeof iconFormat[process.platform] !== 'undefined' ? iconFormat[process.platform] : '.png'
-if (!fs.existsSync(iconPath + ext)) throw new Error(`Unable to find the icon file '${iconPath + ext}'.`)
-
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
     overwrite: true,
-    executableName: 'Viewer',
+    // https://github.com/electron/forge/issues/709
+    executableName: process.platform === 'linux' ? 'map-scanner-viewer' : 'Viewer',
     name: 'Viewer',
-    icon: iconPath
+    icon: path.resolve(__dirname, 'src', 'icons', 'icon')
   },
   rebuildConfig: {},
-  makers: [/*new MakerSquirrel({}), */ new MakerZIP({}, ['win32', 'darwin']), new MakerDeb({}), new MakerRpm({})],
+  makers: [
+    new MakerSquirrel({}, ['win32']),
+    new MakerZIP({}, ['darwin']),
+    new MakerDeb({}, ['linux']),
+    new MakerRpm({}, ['linux'])
+  ],
   plugins: [
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({

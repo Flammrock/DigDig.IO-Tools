@@ -37,20 +37,20 @@ To get started with the **DigDig.IO Tools** monorepo, follow the steps below:
 
 1. **Clone the Repository**: 
 ```bash
-git clone https://github.com/flammrock/digdigio-tools.git
-cd digdigio-tools
+git clone https://github.com/Flammrock/DigDig.IO-Tools.git
+cd DigDig.IO-Tools
 ```
 
 2. **Install Dependencies**:
 This monorepo uses npm workspaces to manage dependencies.
 ```bash
-npm install
+yarn install
 ```
 
 3. **Building the Packages**:
 You can build individual packages or all packages at once.
 ```bash
-npm run build
+yarn run build
 ```
 
 ## 📝 License

@@ -49,10 +49,12 @@ jobs:
             brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12
 
       - name: Install NPM dependencies
-        run: npm install
+        run: |
+            npm install --global yarn
+            yarn install
 
       - name: Build artifacts
-        run: npm run build
+        run: yarn run build
 
       - name: Archive artifacts [linux]
         uses: actions/upload-artifact@v4
