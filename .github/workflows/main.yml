@@ -34,66 +34,82 @@ jobs:
       - name: Install dependencies [linux]
         if: matrix.os == 'ubuntu-latest' 
         run: |
-            sudo apt update
+          sudo apt update
 
-            # for node-canvas
-            sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev
+          # for node-canvas
+          sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev
 
-            # for build rpm in ubuntu ( https://stackoverflow.com/questions/59346604/electron-forge-make-wont-build )
-            sudo apt install -y rpm
+          # for build rpm in ubuntu ( https://stackoverflow.com/questions/59346604/electron-forge-make-wont-build )
+          sudo apt install -y rpm
 
       - name: Install dependencies [macos]
         if: matrix.os == 'macos-latest' 
         run: |
-            # for node-canvas
-            brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12 python-setuptools
+          # for node-canvas
+          brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12 python-setuptools
 
       - name: Install dependencies [windows]
         if: matrix.os == 'windows-latest'
         run: |
-            # Install Chocolatey
-            Set-ExecutionPolicy Bypass -Scope Process -Force; `
-            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
-            iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+          # Install Chocolatey
+          Set-ExecutionPolicy Bypass -Scope Process -Force; `
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-            # for node-canvas
-            choco install -y python2 libjpeg-turbo
-            Invoke-WebRequest -Uri https://ftp.gnome.org/pub/GNOME/binaries/win64/gtk+/2.22/gtk+-bundle_2.22.1-20101229_win64.zip -OutFile gtk-bundle.zip
-            New-Item -Path C:\GTK -ItemType Directory -Force
-            Expand-Archive -Path gtk-bundle.zip -DestinationPath C:\GTK -Force
+          # for node-canvas
+          choco install -y python2 libjpeg-turbo
+          Invoke-WebRequest -Uri https://ftp.gnome.org/pub/GNOME/binaries/win64/gtk+/2.22/gtk+-bundle_2.22.1-20101229_win64.zip -OutFile gtk-bundle.zip
+          New-Item -Path C:\GTK -ItemType Directory -Force
+          Expand-Archive -Path gtk-bundle.zip -DestinationPath C:\GTK -Force
 
       - name: Install NPM dependencies
         run: |
-            npm install --global yarn
-            yarn install
+          npm install --global yarn
+          yarn install
 
       - name: Build artifacts
         run: yarn run build
+
+      - name: Prepare artifacts [linux]
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          mkdir -p build/map-scanner/script build/map-scanner/viewer
+          cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
+          cp packages/map-scanner-viewer/out/make/deb/x64/*.deb build/map-scanner/viewer/
+          cp packages/map-scanner-viewer/out/make/rpm/x64/*.rpm build/map-scanner/viewer/
 
       - name: Archive artifacts [linux]
         uses: actions/upload-artifact@v4
         if: matrix.os == 'ubuntu-latest'
         with:
-          name: map-scanner-linux-x64
-          path: |
-            packages/map-scanner-script/dist/script.min.user.js
-            packages/map-scanner-viewer/out/deb/x64/*.deb
-            packages/map-scanner-viewer/out/rpm/x64/*.rpm
+          name: digdig.io-tools-linux-x64
+          path: build
+
+      - name: Prepare artifacts [macos]
+        if: matrix.os == 'macos-latest'
+        run: |
+          mkdir -p build/map-scanner/script build/map-scanner/viewer
+          cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
+          cp packages/map-scanner-viewer/out/make/zip/darwin/arm64/*.zip build/map-scanner/viewer/
 
       - name: Archive artifacts [macos]
         uses: actions/upload-artifact@v4
         if: matrix.os == 'macos-latest'
         with:
-          name: map-scanner-macos-x64
-          path: |
-            packages/map-scanner-script/dist/script.min.user.js
-            packages/map-scanner-viewer/out/make/zip/darwin/x64/*.zip
+          name: digdig.io-tools-macos-x64
+          path: build
+
+      - name: Prepare artifacts [windows]
+        if: matrix.os == 'windows-latest'
+        run: |
+          New-Item -Path build\map-scanner\script -ItemType Directory
+          New-Item -Path build\map-scanner\viewer -ItemType Directory
+          Copy-Item packages\map-scanner-script\dist\script.min.user.js build\map-scanner\script\
+          Copy-Item packages\map-scanner-viewer\out\make\squirrel.windows\x64\*.exe build\map-scanner\viewer\
 
       - name: Archive artifacts [windows]
         uses: actions/upload-artifact@v4
         if: matrix.os == 'windows-latest'
         with:
-          name: map-scanner-windows-x64
-          path: |
-            packages/map-scanner-script/dist/script.min.user.js
-            packages/map-scanner-viewer/out/make/squirrel.windows/x64/*.exe
+          name: digdig.io-tools-windows-x64
+          path: build
