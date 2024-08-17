@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.1...v1.0.2) (2024-08-17)
+
+
+### Bug Fixes
+
+* **ci:** add upload-release-assets job ([92695ff](https://github.com/Flammrock/DigDig.IO-Tools/commit/92695ff734a809dd8b0a49ecfbd40b2231b41b2e))
+* **ci:** make release-please run first ([f0a55e1](https://github.com/Flammrock/DigDig.IO-Tools/commit/f0a55e19e4bfe9940d9e358c5ae92844cbbe150a))
+
 ## [1.0.1](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.0...v1.0.1) (2024-08-17)
 
 
