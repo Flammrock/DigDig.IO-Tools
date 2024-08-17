@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.2...v1.0.3) (2024-08-17)
+
+
+### Bug Fixes
+
+* **ci:** fix upload paths ([e90ca02](https://github.com/Flammrock/DigDig.IO-Tools/commit/e90ca0281817a3e9850488c5e7a07cd93a227e18))
+
 ## [1.0.2](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.1...v1.0.2) (2024-08-17)
 
 
