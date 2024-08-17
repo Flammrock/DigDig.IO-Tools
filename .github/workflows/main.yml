@@ -86,12 +86,13 @@ jobs:
           cp packages/map-scanner-viewer/out/make/deb/x64/*.deb build/map-scanner/viewer/
           cp packages/map-scanner-viewer/out/make/rpm/x64/*.rpm build/map-scanner/viewer/
 
-      - name: Archive artifacts [linux]
-        uses: actions/upload-artifact@v4
+      - name: Upload artifacts [linux]
         if: matrix.os == 'ubuntu-latest'
-        with:
-          name: digdig.io-tools-linux-x64
-          path: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
+        run: |
+          tar -czvf digdig.io-tools-linux-x64.tar.gz -C build .
+          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-linux-x64.tar.gz
 
       - name: Prepare artifacts [macos]
         if: matrix.os == 'macos-latest'
@@ -100,12 +101,13 @@ jobs:
           cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
           cp packages/map-scanner-viewer/out/make/zip/darwin/arm64/*.zip build/map-scanner/viewer/
 
-      - name: Archive artifacts [macos]
-        uses: actions/upload-artifact@v4
+      - name: Upload artifacts [macos]
         if: matrix.os == 'macos-latest'
-        with:
-          name: digdig.io-tools-macos-arm64
-          path: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
+        run: |
+          tar -czvf digdig.io-tools-macos-arm64.tar.gz -C build .
+          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-macos-arm64.tar.gz
 
       - name: Prepare artifacts [windows]
         if: matrix.os == 'windows-latest'
@@ -115,32 +117,10 @@ jobs:
           Copy-Item packages\map-scanner-script\dist\script.min.user.js build\map-scanner\script\
           Copy-Item packages\map-scanner-viewer\out\make\squirrel.windows\x64\*.exe build\map-scanner\viewer\
 
-      - name: Archive artifacts [windows]
-        uses: actions/upload-artifact@v4
+      - name: Upload artifacts [windows]
         if: matrix.os == 'windows-latest'
-        with:
-          name: digdig.io-tools-windows-x64
-          path: build
-
-  upload-release-assets:
-    needs: [release-please, build]
-    if: ${{ needs.release-please.outputs.release_created }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-
-      - name: Upload assets to GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
         run: |
-          ls
-          tar -czvf digdig.io-tools-linux-x64.tar.gz -C digdig.io-tools-linux-x64 .
-          tar -czvf digdig.io-tools-macos-arm64.tar.gz -C digdig.io-tools-macos-arm64 .
-          zip -r digdig.io-tools-windows-x64.zip digdig.io-tools-windows-x64
-          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-linux-x64.tar.gz
-          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-macos-arm64.tar.gz
+          zip -r digdig.io-tools-windows-x64.zip build
           gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-windows-x64.zip
