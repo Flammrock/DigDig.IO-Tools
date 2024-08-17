@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.4...v1.0.5) (2024-08-17)
+
+
+### Bug Fixes
+
+* **ci:** add checkout for upload assets job ([877a574](https://github.com/Flammrock/DigDig.IO-Tools/commit/877a574ab70101d1fca9aeba2d9dd7c97513785c))
+
 ## [1.0.4](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.3...v1.0.4) (2024-08-17)
 
 
