@@ -1,7 +1,7 @@
 {
   "name": "digdig-workspace",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "digdig.io userscript workspace",
   "workspaces": [
     "packages/*"
