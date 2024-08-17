@@ -134,10 +134,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
         run: |
-          # Change to the directory where artifacts are downloaded
-          cd $GITHUB_WORKSPACE
-          
-          # Upload each artifact file to the release
-          for file in *.zip; do
-            gh release upload ${{ needs.release-please.outputs.tag_name }} "$file"
-          done
+          ls
+          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-linux-x64.zip
+          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-macos-arm64.zip
+          gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-windows-x64.zip
