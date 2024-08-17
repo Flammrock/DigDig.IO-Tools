@@ -122,5 +122,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
         run: |
-          zip -r digdig.io-tools-windows-x64.zip build
+          Compress-Archive -Path build -DestinationPath digdig.io-tools-windows-x64.zip
           gh release upload ${{ needs.release-please.outputs.tag_name }} digdig.io-tools-windows-x64.zip
