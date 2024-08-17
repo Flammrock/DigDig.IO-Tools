@@ -13,23 +13,24 @@ This viewer uses the `canvas` npm package and the `@kmamal/sdl` npm package to r
 ## Getting Started
 
 1. Clone the repo
-```
-git clone
+```bash
+git clone https://github.com/Flammrock/DigDig.IO-Tools.git
+cd DigDig.IO-Tools
 ```
 
 **Note:** The following should be done at the project root.
 
 2. Install NPM packages
-```
-npm install
+```bash
+yarn install
 ```
 3. Build the tiny viewer
-```
-npm run build:map-scanner-tiny-viewer
+```bash
+yarn run build:map-scanner-tiny-viewer
 ```
 4. Start the tiny viewer
-```
-npm run start:map-scanner-tiny-viewer
+```bash
+yarn run start:map-scanner-tiny-viewer
 ```
 
 ## Note

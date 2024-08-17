@@ -13,7 +13,7 @@ This plugin reads configuration options from a specified JSON file and injects t
 To install the **userscript-webpack-plugin** in your package within this monorepo, add it as a dependency by doing:
 
 ```bash
-npm install userscript-webpack-plugin -w your_package
+yarn workspace your_package add userscript-webpack-plugin
 ```
 
 ## Usage

@@ -17,8 +17,9 @@ The viewer _(this project)_ then processes the received data, extracting and ren
 1. Clone the repo
 
 If you haven't already cloned the repository, you can do so by running:
-```
-git clone https://github.com/Flammrock/digdig-io-tools.git
+```bash
+git clone https://github.com/Flammrock/DigDig.IO-Tools.git
+cd DigDig.IO-Tools
 ```
 
 **Note:** All following commands should be run from the project root directory.
@@ -26,20 +27,20 @@ git clone https://github.com/Flammrock/digdig-io-tools.git
 2. Install NPM packages
 
 If you haven't already done so, install the necessary dependencies by running:
-```
-npm install
+```bash
+yarn install
 ```
 
 3. Start developement server
 
-```
-npm run start:map-scanner-viewer
+```bash
+yarn run start:map-scanner-viewer
 ```
 
 4. Build
 
-```
-npm run build:map-scanner-viewer
+```bash
+yarn run build:map-scanner-viewer
 ```
 
 ## How to Use
@@ -55,22 +56,22 @@ Follow the instructions from the **DigDig.IO Map Scanner Script** project to inj
 In the root directory of the project, run the following command to start the viewer:
 
 ```bash
-npm run start:map-scanner-viewer
+yarn run start:map-scanner-viewer
 ```
 
 **Alternatively**, if you prefer to build the application first and then run it, use:
 
 ```bash
-npm run build:map-scanner-viewer
+yarn run build:map-scanner-viewer
 ```
 
 After building, locate the viewer executable. The path depends on your operating system:
 
-- **Windows**: `./packages/map-scanner-viewer/out/Viewer-win32-x64/Viewer.exe`
-- **macOs**: `./packages/map-scanner-viewer/out/Viewer-darwin-x64/Viewer.app`
-- **Linux**: `./packages/map-scanner-viewer/out/Viewer-linux-x64/Viewer`
+- **Windows**: `./packages/map-scanner-viewer/out/make/squirrel.windows/x64/Viewer-{VERSION} Setup.exe`
+- **macOs**: `./packages/map-scanner-viewer/out/make/zip/darwin/x64/Viewer-darwin-x64-{VERSION}.zip`
+- **Linux**: `./packages/map-scanner-viewer/out/make/deb/x64/map-scanner-viewer_{VERSION}_amd64.deb` or `./packages/map-scanner-viewer/out/make/rpm/x64/map-scanner-viewer-{VERSION}-1.x86_64.rpm`
 
-Generally: `./packages/map-scanner-viewer/out/Viewer-{PLATFORM}-{ARCHITECTURE}/Viewer{EXTENSION}`
+Generally in: `./packages/map-scanner-viewer/out/make`
 
 #### 3. Connect to the Viewer
 

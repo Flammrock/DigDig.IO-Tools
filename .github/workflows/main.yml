@@ -11,7 +11,10 @@ name: release-please
 
 jobs:
   release-please:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Release Please
         uses: googleapis/release-please-action@v4
@@ -26,24 +29,91 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
+        if: ${{ steps.release.outputs.release_created }}
         with:
           node-version: 'latest'
-        if: ${{ steps.release.outputs.release_created }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies [linux]
+        if: ${{ matrix.os == 'ubuntu-latest' && steps.release.outputs.release_created }}
+        run: |
+          sudo apt update
+
+          # for node-canvas
+          sudo apt install -y libcairo2-dev libjpeg-dev libpango1.0-dev libgif-dev librsvg2-dev
+
+          # for build rpm in ubuntu ( https://stackoverflow.com/questions/59346604/electron-forge-make-wont-build )
+          sudo apt install -y rpm
+
+      - name: Install dependencies [macos]
+        if: ${{ matrix.os == 'macos-latest' && steps.release.outputs.release_created }}
+        run: |
+          # for node-canvas
+          brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12 python-setuptools
+
+      - name: Install dependencies [windows]
+        if: ${{ matrix.os == 'windows-latest' && steps.release.outputs.release_created }}
+        run: |
+          # Install Chocolatey
+          Set-ExecutionPolicy Bypass -Scope Process -Force; `
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+          # for node-canvas
+          choco install -y python2 libjpeg-turbo
+          Invoke-WebRequest -Uri https://ftp.gnome.org/pub/GNOME/binaries/win64/gtk+/2.22/gtk+-bundle_2.22.1-20101229_win64.zip -OutFile gtk-bundle.zip
+          New-Item -Path C:\GTK -ItemType Directory -Force
+          Expand-Archive -Path gtk-bundle.zip -DestinationPath C:\GTK -Force
+
+      - name: Install NPM dependencies
         if: ${{ steps.release.outputs.release_created }}
+        run: |
+          npm install --global yarn
+          yarn install
 
       - name: Build artifacts
-        if: ${{ steps.release }}
-        run: npm run build
         if: ${{ steps.release.outputs.release_created }}
+        run: yarn run build
 
-      - name: Archive artifacts
+      - name: Prepare artifacts [linux]
+        if: ${{ matrix.os == 'ubuntu-latest' && steps.release.outputs.release_created }}
+        run: |
+          mkdir -p build/map-scanner/script build/map-scanner/viewer
+          cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
+          cp packages/map-scanner-viewer/out/make/deb/x64/*.deb build/map-scanner/viewer/
+          cp packages/map-scanner-viewer/out/make/rpm/x64/*.rpm build/map-scanner/viewer/
+
+      - name: Archive artifacts [linux]
         uses: actions/upload-artifact@v4
+        if: ${{ matrix.os == 'ubuntu-latest' && steps.release.outputs.release_created }}
         with:
-          name: map-scanner
-          path: |
-            packages/map-scanner-script/dist/script.min.user.js
-            packages/map-scanner-viewer/out
-        if: ${{ steps.release.outputs.release_created }}
+          name: digdig.io-tools-linux-x64
+          path: build
+
+      - name: Prepare artifacts [macos]
+        if: ${{ matrix.os == 'macos-latest' && steps.release.outputs.release_created }}
+        run: |
+          mkdir -p build/map-scanner/script build/map-scanner/viewer
+          cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
+          cp packages/map-scanner-viewer/out/make/zip/darwin/arm64/*.zip build/map-scanner/viewer/
+
+      - name: Archive artifacts [macos]
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.os == 'macos-latest' && steps.release.outputs.release_created }}
+        with:
+          name: digdig.io-tools-macos-arm64
+          path: build
+
+      - name: Prepare artifacts [windows]
+        if: ${{ matrix.os == 'windows-latest' && steps.release.outputs.release_created }}
+        run: |
+          New-Item -Path build\map-scanner\script -ItemType Directory
+          New-Item -Path build\map-scanner\viewer -ItemType Directory
+          Copy-Item packages\map-scanner-script\dist\script.min.user.js build\map-scanner\script\
+          Copy-Item packages\map-scanner-viewer\out\make\squirrel.windows\x64\*.exe build\map-scanner\viewer\
+
+      - name: Archive artifacts [windows]
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.os == 'windows-latest' && steps.release.outputs.release_created }}
+        with:
+          name: digdig.io-tools-windows-x64
+          path: build

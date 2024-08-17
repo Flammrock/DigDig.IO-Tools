@@ -19,8 +19,9 @@ This script leverages the **DigDig.IO Injection** and **Shared** packages to hoo
 1. Clone the repo
 
 If you haven't already cloned the repository, you can do so by running:
-```
-git clone https://github.com/Flammrock/digdig-io-tools.git
+```bash
+git clone https://github.com/Flammrock/DigDig.IO-Tools.git
+cd DigDig.IO-Tools
 ```
 
 **Note:** All following commands should be run from the project root directory.
@@ -28,15 +29,15 @@ git clone https://github.com/Flammrock/digdig-io-tools.git
 2. Install NPM packages
 
 If you haven't already done so, install the necessary dependencies by running:
-```
-npm install
+```bash
+yarn install
 ```
 
 3. Build
 
 Build the userscript by running:
-```
-npm run build:map-scanner-script
+```bash
+yarn run build:map-scanner-script
 ```
 
 If the build succeeds, the userscript file will be generated at `./packages/map-scanner-script/dist/script.min.user.js`.

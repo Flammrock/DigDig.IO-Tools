@@ -17,7 +17,7 @@ Ensure you use an npm package like `css-loader` to import CSS from external npm 
 To build the fonts, run the following command:
 
 ```bash
-npm run build
+yarn run build
 ```
 
 This command generates the font files (.ttf, .eot, .woff2, etc.) and the CSS files, similar to FontAwesome.

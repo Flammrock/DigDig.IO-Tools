@@ -16,10 +16,10 @@ This package includes a variety of classes and utilities related to the game [Di
 
 ## Usage
 
-To use **Shared** in another package of this monorepo, first install the dependency via npm (at the root of the repo):
+To use **Shared** in another package of this monorepo, first install the dependency via yarn (at the root of the repo):
 
 ```bash
-npm install shared -w your_package
+yarn workspace your_package add shared
 ```
 
 ### Example Usage

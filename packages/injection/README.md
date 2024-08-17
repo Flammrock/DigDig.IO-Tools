@@ -18,10 +18,10 @@ The primary purpose of **DigDig.IO Injection** is to centralize and streamline a
 
 ## Usage
 
-To use **DigDig.IO Injection** in another package of this monorepo, first install the dependency via npm (at the root of the repo):
+To use **DigDig.IO Injection** in another package of this monorepo, first install the dependency via yarn (at the root of the repo):
 
 ```bash
-npm install injection -w your_package
+yarn workspace your_package add injection
 ```
 
 ### Example Usage
