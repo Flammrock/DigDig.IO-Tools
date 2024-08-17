@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.6...v1.0.7) (2024-08-17)
+
+
+### Bug Fixes
+
+* **ci:** compress artifacts ([89920e1](https://github.com/Flammrock/DigDig.IO-Tools/commit/89920e1b9c82a99377cc8c02f3b62ffc3c6c2d70))
+
 ## [1.0.6](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.5...v1.0.6) (2024-08-17)
 
 
