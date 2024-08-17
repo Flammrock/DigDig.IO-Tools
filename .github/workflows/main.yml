@@ -11,6 +11,18 @@ name: release-please
 
 jobs:
   release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - name: Release Please
+        uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN || github.token }}
+          release-type: node
+  build:
+    needs: release-please
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -25,16 +37,16 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v4
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ needs.release-please.outputs.release_created }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ needs.release-please.outputs.release_created }}
         with:
           node-version: 'latest'
 
       - name: Install dependencies [linux]
-        if: ${{ matrix.os == 'ubuntu-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'ubuntu-latest' && needs.release-please.outputs.release_created }}
         run: |
           sudo apt update
 
@@ -45,13 +57,13 @@ jobs:
           sudo apt install -y rpm
 
       - name: Install dependencies [macos]
-        if: ${{ matrix.os == 'macos-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'macos-latest' && needs.release-please.outputs.release_created }}
         run: |
           # for node-canvas
           brew install pkg-config cairo pango libpng jpeg giflib librsvg pixman python@3.12 python-setuptools
 
       - name: Install dependencies [windows]
-        if: ${{ matrix.os == 'windows-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'windows-latest' && needs.release-please.outputs.release_created }}
         run: |
           # Install Chocolatey
           Set-ExecutionPolicy Bypass -Scope Process -Force; `
@@ -65,17 +77,17 @@ jobs:
           Expand-Archive -Path gtk-bundle.zip -DestinationPath C:\GTK -Force
 
       - name: Install NPM dependencies
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ needs.release-please.outputs.release_created }}
         run: |
           npm install --global yarn
           yarn install
 
       - name: Build artifacts
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ needs.release-please.outputs.release_created }}
         run: yarn run build
 
       - name: Prepare artifacts [linux]
-        if: ${{ matrix.os == 'ubuntu-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'ubuntu-latest' && needs.release-please.outputs.release_created }}
         run: |
           mkdir -p build/map-scanner/script build/map-scanner/viewer
           cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
@@ -84,13 +96,13 @@ jobs:
 
       - name: Archive artifacts [linux]
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.os == 'ubuntu-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'ubuntu-latest' && needs.release-please.outputs.release_created }}
         with:
           name: digdig.io-tools-linux-x64
           path: build
 
       - name: Prepare artifacts [macos]
-        if: ${{ matrix.os == 'macos-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'macos-latest' && needs.release-please.outputs.release_created }}
         run: |
           mkdir -p build/map-scanner/script build/map-scanner/viewer
           cp packages/map-scanner-script/dist/script.min.user.js build/map-scanner/script/
@@ -98,13 +110,13 @@ jobs:
 
       - name: Archive artifacts [macos]
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.os == 'macos-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'macos-latest' && needs.release-please.outputs.release_created }}
         with:
           name: digdig.io-tools-macos-arm64
           path: build
 
       - name: Prepare artifacts [windows]
-        if: ${{ matrix.os == 'windows-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'windows-latest' && needs.release-please.outputs.release_created }}
         run: |
           New-Item -Path build\map-scanner\script -ItemType Directory
           New-Item -Path build\map-scanner\viewer -ItemType Directory
@@ -113,7 +125,7 @@ jobs:
 
       - name: Archive artifacts [windows]
         uses: actions/upload-artifact@v4
-        if: ${{ matrix.os == 'windows-latest' && steps.release.outputs.release_created }}
+        if: ${{ matrix.os == 'windows-latest' && needs.release-please.outputs.release_created }}
         with:
           name: digdig.io-tools-windows-x64
           path: build
