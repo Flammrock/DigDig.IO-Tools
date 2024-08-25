@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.8...v1.0.9) (2024-08-17)
+
+
+### Bug Fixes
+
+* **ci:** use Compress-Archive instead for windows build ([8ce83e4](https://github.com/Flammrock/DigDig.IO-Tools/commit/8ce83e48929537784ad5a2e8419f312b190ed598))
+
 ## [1.0.8](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.7...v1.0.8) (2024-08-17)
 
 
