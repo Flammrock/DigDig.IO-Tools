@@ -4,21 +4,22 @@
   "version": "1.0.8",
   "description": "digdig.io userscript workspace",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/tools/**/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "yarn run build:custom-font && yarn run build:userscript-plugin && yarn run build:shared && yarn run build:injection && yarn run build:map-scanner-shared && yarn run build:map-scanner-script && yarn run build:map-scanner-tiny-viewer && yarn run build:map-scanner-viewer",
-    "build:userscript-plugin": "cd packages/userscript-webpack-plugin && yarn run build",
-    "build:shared": "cd packages/shared && yarn run build",
-    "build:injection": "cd packages/injection && yarn run build",
-    "build:custom-font": "cd packages/custom-font && yarn run build",
-    "build:map-scanner-shared": "cd packages/map-scanner-shared && yarn run build",
-    "build:map-scanner-script": "cd packages/map-scanner-script && yarn run build",
-    "start:map-scanner-tiny-viewer": "cd packages/map-scanner-tiny-viewer && yarn start",
-    "build:map-scanner-tiny-viewer": "cd packages/map-scanner-tiny-viewer && yarn run build",
-    "start:map-scanner-viewer": "yarn workspace map-scanner-viewer start",
-    "build:map-scanner-viewer": "yarn workspace map-scanner-viewer make"
+    "build": "yarn run build:custom-font && yarn run build:userscript-plugin && yarn run build:shared && yarn run build:injection && yarn run build:map-scanner-shared && yarn run build:map-scanner-remote && yarn run build:map-scanner-script && yarn run userscript:build && yarn run app:build",
+    "build:userscript-plugin": "yarn workspace userscript-webpack-plugin build",
+    "build:shared": "yarn workspace shared build",
+    "build:injection": "yarn workspace injection build",
+    "build:custom-font": "yarn workspace custom-font build",
+    "build:map-scanner-shared": "yarn workspace map-scanner-shared build",
+    "build:map-scanner-script": "yarn workspace map-scanner-script build",
+    "build:map-scanner-remote": "yarn workspace map-scanner-remote build",
+    "app:start": "yarn workspace electron-app start",
+    "app:build": "yarn workspace electron-app make",
+    "userscript:build": "yarn workspace userscript build"
   },
   "keywords": [
     "digdig.io",

@@ -1,0 +1,140 @@
+.button-container {
+  position: relative;
+  align-self: flex-end;
+  margin: 5px 0;
+  user-select: none;
+  cursor: pointer;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.button {
+  --button-radius: 30px;
+  position: relative;
+  min-width: var(--button-width);
+  max-width: var(--button-width);
+  height: var(--button-height);
+  border-radius: var(--button-radius);
+  background: #3b3b3b;
+  border: 2px solid #3b3b3b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: max-width 0.2s ease-in-out, border 0.7s ease-out;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.button.expand {
+  max-width: 800px;
+}
+
+.button.active {
+  border: 2px solid rgb(147, 147, 147);
+}
+
+.button.success {
+  border: 2px solid rgb(0, 142, 17);
+}
+
+.button.error {
+  border: 2px solid rgb(177, 0, 0);
+}
+
+.button.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button.loading {
+  cursor: wait;
+  background: linear-gradient(to right, transparent 20px, #3b3b3b 140px);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: max-width 0.2s ease-in-out;
+}
+
+.button .color {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: var(--button-width);
+  height: var(--button-height);
+  background: #3b3b3b;
+}
+
+.button .icon-container {
+  position: relative;
+  left: 0.5px;
+  width: calc(var(--button-width) - 2px);
+  height: calc(var(--button-height) - 2px);
+  flex-shrink: 0;
+  order: 2;
+}
+
+.button .icon-container .icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+}
+
+.button .name {
+  white-space: nowrap;
+  color: #aaa;
+  padding: 0 10px 0 20px;
+  order: 1;
+  flex-grow: 1;
+  text-align: left;
+  font-family: 'Ubuntu';
+}
+
+.button.loading .name {
+  padding: 0 10px 0 70px;
+}
+
+.button-container .rainbow-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  opacity: 1;
+  animation: fade-in 0.2s ease-out, hue-rotate-animation 2s infinite linear;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes hue-rotate-animation {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.button-container .loading-border {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: calc(var(--button-width) - 4px);
+  height: calc(var(--button-height) - 4px);
+  overflow: visible;
+  opacity: 1;
+  animation: fade-in 0.2s ease-out, spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

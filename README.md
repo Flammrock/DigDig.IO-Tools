@@ -7,6 +7,12 @@ This is a monorepo containing various packages and tools developed for the [DigD
 
 This monorepo is structured into multiple packages, each designed to serve a specific purpose. Below is an overview of the main packages:
 
+### `electron-app`
+The `electron-app` package serves as the central hub for all tools included in this monorepo. Built using Electron, this application provides a user-friendly interface that brings together the various functionalities, making it easy to access and manage the different tools. The app establishes a WebSocket connection with the `userscript` to enable real-time communication and coordination between the script and the desktop application.
+
+### `userscript`
+The `userscript` package contains all the scripts needed to interact with the [DigDig.IO](https://digdig.io/) game. These scripts are injected into the game's web environment and work in tandem with the `electron-app` via WebSocket communication. This setup allows for seamless integration between the desktop application and the game, ensuring that tools and functionalities can be accessed directly from within the game's interface without altering its core mechanics.
+
 ### `custom-font`
 A package that generates font files _(such as .ttf and .woff2)_ from SVG files. It centralizes icon management, ensuring that all projects within the monorepo use the same set of icons.
 
@@ -16,16 +22,13 @@ This package contains all the functionalities for injecting and hooking into the
 ### `shared`
 A utility package containing common classes, functions, and resources that are reused across multiple projects within the monorepo. This package ensures consistency and avoids duplication by centralizing shared code.
 
-### `map-scanner-viewer`
+### `map-scanner/remote`
 A package for visualizing map data for [DigDig.IO](https://digdig.io/). This tool allows you to scan and view maps, helping you better understand the game’s terrain and design.
 
-### `map-scanner-tiny-viewer`
-A lightweight version of the `map-scanner-viewer` package, optimized for performance and minimal resource usage. Ideal for scenarios where you need a faster, more efficient map scanning tool.
-
-### `map-scanner-script`
+### `map-scanner/script`
 This package contains scripts designed to scan and analyze maps within [DigDig.IO](https://digdig.io/). It's the backbone of the map scanning functionality, providing the core logic and processes.
 
-### `map-scanner-shared`
+### `map-scanner/shared`
 A shared utility package for map scanning-related projects. It includes common resources and utilities that are used across the various map scanner packages, ensuring consistency and reducing duplication.
 
 ### `userscript-webpack-plugin`

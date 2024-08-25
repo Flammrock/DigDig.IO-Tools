@@ -1,0 +1,10 @@
+.menu {
+  --button-width: 36px;
+  --button-height: 36px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}

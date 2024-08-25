@@ -17,5 +17,6 @@
   "eslint.validate": ["typescript"],
   "editor.tabSize": 2,
   "files.eol": "\n",
-  "files.insertFinalNewline": false
+  "files.insertFinalNewline": false,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

@@ -11,6 +11,7 @@ import Dispatcher, { Callable } from './dispatcher'
 export type EventCallbacks = Record<any, Callable>
 
 export class EventEmitter<E extends EventCallbacks> {
+  // TODO: SHOULD BE PRIVATE
   protected dispatcher = new Dispatcher()
 
   public on<T extends keyof E>(eventType: T, callback: E[T]): this {
@@ -21,6 +22,15 @@ export class EventEmitter<E extends EventCallbacks> {
   public off<T extends keyof E>(eventType: T, callback: E[T]): this {
     this.dispatcher.off(eventType, callback)
     return this
+  }
+
+  public fire<T extends keyof E>(eventType: T, ...args: Parameters<E[T]>): this {
+    this.dispatcher.emit(eventType, ...args)
+    return this
+  }
+
+  public offAll(): void {
+    this.dispatcher.offAll()
   }
 }
 

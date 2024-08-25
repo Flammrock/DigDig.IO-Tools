@@ -147,6 +147,13 @@ export class Transform implements TransformLike {
     return { x: this.a * x + this.c * y + this.e, y: this.b * x + this.d * y + this.f }
   }
 
+  applyTo(v: Vector2Like): Vector2Like
+  applyTo(x: number, y: number): Vector2Like
+  public applyTo(a: Vector2Like | number, b?: number): Vector2Like {
+    // because typescript is dumb, i need to force for some overload.....
+    return this.screenToWorld(a as unknown as number, b as unknown as number)
+  }
+
   public raw(): TransformLike {
     return {
       a: this.a,

@@ -11,3 +11,5 @@
 export type Nullable<T> = T | null
 
 export type Writeable<T> = { -readonly [K in keyof T]: T[K] }
+
+export type StripPrefix<T extends string, P extends string> = T extends `${P}${infer U}` ? U : T

@@ -41,7 +41,7 @@ export type Callable = (...args: any[]) => any
  *     this.dispatcher.off(eventType, callback)
  *   }
  *
- *   public emit<T extends keyof MyEventFn>(eventType: T, args: Parameters<MyEventFn[T]>): void {
+ *   public fire<T extends keyof MyEventFn>(eventType: T, args: Parameters<MyEventFn[T]>): void {
  *     this.dispatcher.emit(eventType, args)
  *   }
  * }
@@ -57,16 +57,16 @@ export class Dispatcher {
   /**
    * A map storing event types and their associated callbacks.
    * @private
-   * @type {Map<unknown, Array<Callable>>}
+   * @type
    */
   private events: Map<unknown, Array<Callable>> = new Map()
 
   /**
    * Registers a callback function to be invoked when the specified event type is emitted.
    * @template T
-   * @param {T} eventType - The event type to listen for.
-   * @param {Callable} callback - The callback function to register.
-   * @returns {void}
+   * @param eventType - The event type to listen for.
+   * @param callback - The callback function to register.
+   * @returns
    */
   on<T>(eventType: T, callback: Callable): void {
     if (!this.events.has(eventType)) {
@@ -78,9 +78,9 @@ export class Dispatcher {
   /**
    * Unregisters a callback function from the specified event type.
    * @template T
-   * @param {T} eventType - The event type to stop listening for.
-   * @param {Callable} callback - The callback function to unregister.
-   * @returns {void}
+   * @param eventType - The event type to stop listening for.
+   * @param callback - The callback function to unregister.
+   * @returns
    */
   off<T>(eventType: T, callback: Callable): void {
     if (!this.events.has(eventType)) return
@@ -96,14 +96,22 @@ export class Dispatcher {
   /**
    * Emits an event of the specified type, invoking all registered callback functions with the provided arguments.
    * @template T
-   * @param {T} eventType - The event type to emit.
-   * @param {...Array<unknown>} args - The arguments to pass to the callback functions.
+   * @param eventType - The event type to emit.
+   * @param args - The arguments to pass to the callback functions.
    * @returns {void}
    */
   emit<T>(eventType: T, ...args: Array<unknown>): void {
     const callbacks = this.events.get(eventType)
     if (callbacks) {
       callbacks.forEach((callback) => callback(...args))
+    }
+  }
+
+  offAll<T>(eventType?: T): void {
+    if (typeof eventType !== 'undefined') {
+      this.events.delete(eventType)
+    } else {
+      this.events = new Map() // clear everything
     }
   }
 }

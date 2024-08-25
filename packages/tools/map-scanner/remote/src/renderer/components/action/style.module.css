@@ -1,0 +1,116 @@
+.bar {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transform: translateX(-50%);
+}
+
+.bar .button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid transparent;
+  background-color: #3b3b3b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  pointer-events: auto;
+  margin: 10px;
+  box-shadow: 0px 0px 15px 4px #111111;
+}
+
+.bar .button:hover {
+  background-color: #464545;
+  border-color: #c0c0c0;
+}
+
+.bar .button .bubble {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.bar .button:hover .bubble {
+  display: block;
+}
+
+.bar .button .name {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Ubuntu';
+}
+
+.bar .button .icon {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+}
+
+.button .corners {
+  --radius: 4px;
+  --border-width: 2px;
+  --size: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.button.active .corners {
+  opacity: 1;
+}
+
+.button .corners div {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border: var(--border-width) solid white;
+  background-color: transparent;
+}
+
+.button .corners div:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-width: var(--border-width) 0 0 var(--border-width);
+  border-radius: var(--radius) 0 0 0;
+}
+
+.button .corners div:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-width: var(--border-width) var(--border-width) 0 0;
+  border-radius: 0 var(--radius) 0 0;
+}
+
+.button .corners div:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  border-width: 0 var(--border-width) var(--border-width) 0;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.button .corners div:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 var(--border-width) var(--border-width);
+  border-radius: 0 0 0 var(--radius);
+}

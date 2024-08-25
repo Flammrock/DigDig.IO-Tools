@@ -5,12 +5,6 @@
 | LICENSE file in the root directory of this source tree.            |
 \*------------------------------------------------------------------*/
 
-export interface NetworkBridge {
-  port: number
-  handshake: ArrayBuffer
-}
+import '../app/renderer-context'
 
-export const UniqueBridgeIdProvider = ((): (() => number) => {
-  let id = 1
-  return (): number => id++
-})()
+export const port = 8453

@@ -34,7 +34,7 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(ts)$/i,
+        test: /\.(tsx?)$/i,
         loader: 'ts-loader',
         options: {
           configFile: 'tsconfig.json'
@@ -45,7 +45,7 @@ const config: Configuration = {
   },
   resolve: {
     modules: [path.resolve(__dirname, '../../node_modules'), 'node_modules'],
-    extensions: ['.ts']
+    extensions: ['.ts', '.tsx']
   },
   optimization: {
     minimize: isProduction,

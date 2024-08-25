@@ -7,7 +7,6 @@
 
 import { Buffer } from '../core/buffer'
 import { GridVector2 } from '../core/vector2'
-import { NetworkBridge } from '../network/bridge'
 import { Nullable } from '../utils/helpers'
 import { Chunk } from './chunk'
 
@@ -21,9 +20,27 @@ export enum ChunkAggregatorMagicByte {
 
 export const ChunkAggregatorProtocol = {
   sizeOfChunk(chunk: Chunk): number {
+    // content:
+    //   + 1 byte  for starting magic byte
+    //   + 4 bytes for x position
+    //   + 4 bytes for y position
+    //   + 4 bytes for chunk buffer size
+    //   + n bytes for chunk buffer
+    //   + 1 byte  for ending magic byte
+    // total: 1 + 4 + 4 + 4 + 1 + n
+    // which simplify to: 14 + n
+    // @see the method ChunkAggregatorProtocol.writeChunk for confirmation
     return 14 + chunk.buffer.byteLength
   },
   sizeOfChunkList(chunks: ReadonlyArray<Chunk>): number {
+    // content:
+    //   + 1 byte  for starting magic byte
+    //   + 4 bytes for chunk list length
+    //   + m bytes for chunk list buffer
+    //   + 1 byte  for ending magic byte
+    // total: 1 + 4 + 1 + m
+    // which simplify to: 6 + m
+    // @see the method ChunkAggregatorProtocol.writeChunkList for confirmation
     return 6 + chunks.reduce((acc, chunk) => acc + this.sizeOfChunk(chunk), 0)
   },
   writeChunk(buffer: Buffer, chunk: Chunk): void {
