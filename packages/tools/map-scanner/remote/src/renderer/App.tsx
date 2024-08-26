@@ -13,6 +13,8 @@ import IconClose from './components/icons/icon-close'
 import { ActionBar, ActionOptions } from './components/action'
 import IconPan from './components/icons/icon-pan'
 import IconFollow from './components/icons/icon-follow'
+import IconExport from './components/icons/icon-export'
+import { ChunkCacheExportType } from './core/chunk-cache'
 
 interface AppProps {
   state: State
@@ -53,6 +55,10 @@ export const App: React.FC<AppProps> = ({ state }) => {
     await state.cache.saveAs()
     return ButtonFeedback.Success
   }
+  const handleOnExport = async () => {
+    await state.cache.exportAs(ChunkCacheExportType.PNG)
+    return ButtonFeedback.Success
+  }
 
   const actions: ActionOptions = [
     {
@@ -78,6 +84,7 @@ export const App: React.FC<AppProps> = ({ state }) => {
         <Button icon={<IconOpen />} name={'Open'} onClick={handleOnOpen} />
         <Button icon={<IconSave />} name={'Save'} onClick={handleOnSave} />
         <Button icon={<IconSaveAs />} name={'Save As...'} onClick={handleOnSaveAs} />
+        <Button icon={<IconExport />} name={'Export as .PNG'} onClick={handleOnExport} />
         <Button icon={<IconClose />} name={'Close this tool'} />
       </Menu>
       <ActionBar actions={actions} />
