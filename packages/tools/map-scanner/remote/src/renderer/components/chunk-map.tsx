@@ -57,11 +57,17 @@ const ChunkMap: React.FC<ChunkMapProps> = ({ cache }) => {
     if (!container) return
     const chunks = Object.values(cache['internal'])
     chunks.forEach((chunk) => inject(container, localCache, chunk))
-    const handleCacheUpdate = (chunk: ExtractedChunk) => inject(container, localCache, chunk)
+    const handleCacheUpdate = (chunk: ExtractedChunk) => {
+      if (!containerRef.current) return
+      if (containerRef.current.destroyed) return
+      inject(containerRef.current, localCache, chunk)
+    }
     const handleCacheClear = () => {
       localCache.clear()
-      container.children.forEach((child) => child.destroy({ children: true, baseTexture: true, texture: true }))
-      container.removeChildren()
+      if (containerRef.current && !containerRef.current.destroyed) {
+        container.children.forEach((child) => child.destroy({ children: true, baseTexture: true, texture: true }))
+        container.removeChildren()
+      }
     }
     cache.on(ChunkCacheEventType.Update, handleCacheUpdate)
     cache.on(ChunkCacheEventType.Clear, handleCacheClear)

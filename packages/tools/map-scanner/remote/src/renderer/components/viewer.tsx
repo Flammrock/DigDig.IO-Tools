@@ -59,7 +59,7 @@ const Viewer = React.forwardRef<ViewerHandle, { state: State }>(({ state }, ref)
         if (containerRef.current) {
           containerRef.current.removeChild(sprite)
         }
-        sprite.destroy()
+        if (!sprite.destroyed) sprite.destroy(true)
       }
       clientsMapRef.current.delete(clientId)
     }
