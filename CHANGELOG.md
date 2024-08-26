@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.9...v1.1.0) (2024-08-26)
+
+
+### Features
+
+* enhanced tools system ([34219fe](https://github.com/Flammrock/DigDig.IO-Tools/commit/34219fe4ca992c5579cb28d707b448ee4dce61f4))
+* **tools/map-scanner:** add export png ([53e5187](https://github.com/Flammrock/DigDig.IO-Tools/commit/53e51870b651e7528f904bc67b900987db9fc155))
+
+
+### Bug Fixes
+
+* **tools/map-scanner:** destroy if needed graphics ([3377675](https://github.com/Flammrock/DigDig.IO-Tools/commit/33776757515aa25f8fe2c7ce1c883b26f34182c4))
+* **tools/map-scanner:** resolve texture update issue ([064bccf](https://github.com/Flammrock/DigDig.IO-Tools/commit/064bccfde04aa17a2560a77c4500e8a3f19048b2))
+
 ## [1.0.9](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.8...v1.0.9) (2024-08-17)
 
 
