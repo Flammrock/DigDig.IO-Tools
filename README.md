@@ -3,7 +3,7 @@
 
 This is a monorepo containing various packages and tools developed for the [DigDig.IO](https://digdig.io/) game. Please note that this repository is **not affiliated** with the official [DigDig.IO](https://digdig.io/) game or its developers. The tools provided here are intended for fun and experimental purposes only. They are not designed for, nor should they be used in, any form of cheating. These packages do not alter the game’s logic, mechanics, or behavior in any way.
 
-![output](https://github.com/user-attachments/assets/42a990e7-349c-43f2-855a-5958d5d723e1)
+![output](https://github.com/user-attachments/assets/725bc85f-d5a9-436c-84c7-1011bc51b941)
 
 ## 📦 Packages
 
