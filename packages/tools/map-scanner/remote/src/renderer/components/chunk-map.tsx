@@ -21,8 +21,7 @@ const inject = (container: PIXI.Container, localCache: Map<string, PIXI.Sprite>,
 
   if (sprite) {
     // Update existing sprite
-    sprite.texture = PIXI.Texture.from(image)
-    sprite.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
+    sprite.texture.update()
     sprite.x = bounds.x
     sprite.y = bounds.y
     sprite.width = bounds.width
@@ -61,6 +60,7 @@ const ChunkMap: React.FC<ChunkMapProps> = ({ cache }) => {
     const handleCacheUpdate = (chunk: ExtractedChunk) => inject(container, localCache, chunk)
     const handleCacheClear = () => {
       localCache.clear()
+      container.children.forEach((child) => child.destroy({ children: true, baseTexture: true, texture: true }))
       container.removeChildren()
     }
     cache.on(ChunkCacheEventType.Update, handleCacheUpdate)

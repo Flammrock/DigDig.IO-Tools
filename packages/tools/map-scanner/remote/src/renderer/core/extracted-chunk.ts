@@ -4,7 +4,6 @@ class ExtractedChunk {
   public readonly chunk: Chunk
   public readonly bounds: RectangleLike
   public readonly isSelected: boolean
-  private debugInformation: boolean
   private readonly offscreen: OffscreenCanvasRenderingContext2D
 
   public get image(): OffscreenCanvas {
@@ -24,7 +23,6 @@ class ExtractedChunk {
       height: ChunkSize
     }
     this.isSelected = false
-    this.debugInformation = true
     const canvas = new OffscreenCanvas(ChunkSize, ChunkSize)
     const ctx = canvas.getContext('2d')
     if (!ctx) throw new Error('Unable to retrieve 2d context.')
@@ -37,10 +35,6 @@ class ExtractedChunk {
     const pixels = new ImageData(rawImage.data, rawImage.width, rawImage.height)
     this.offscreen.clearRect(0, 0, ChunkSize, ChunkSize)
     this.offscreen.putImageData(pixels, 0, 0)
-  }
-
-  public debug(value: boolean): void {
-    this.debugInformation = value
   }
 
   public update(chunk: Chunk): void {
