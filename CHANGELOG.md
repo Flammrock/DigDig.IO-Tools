@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.2.0...v1.2.1) (2025-02-15)
+
+
+### Miscellaneous Chores
+
+* release 1.2.1 ([bde99b8](https://github.com/Flammrock/DigDig.IO-Tools/commit/bde99b8b93fd3e42479473e6025053d0135f269b))
+
 ## [1.2.0](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.1.0...v1.2.0) (2025-02-15)
 
 
