@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.1.0...v1.2.0) (2025-02-15)
+
+
+### Features
+
+* **tools/map-scanner:** add ability to remove chunk ([afe007f](https://github.com/Flammrock/DigDig.IO-Tools/commit/afe007fe3a432881657022f250689d6d47f85d9c))
+
+
+### Bug Fixes
+
+* **app:** remove menu ([9caaff8](https://github.com/Flammrock/DigDig.IO-Tools/commit/9caaff87489afab52551b07295f394eee192c547))
+* **injection:** update new memory locations ([aa40782](https://github.com/Flammrock/DigDig.IO-Tools/commit/aa407828d99c92d5a38a682f5a2c2ee9fbe41f73))
+
 ## [1.1.0](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.0.9...v1.1.0) (2024-08-26)
 
 
