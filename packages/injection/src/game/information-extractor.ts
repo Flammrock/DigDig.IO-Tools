@@ -9,15 +9,17 @@ import { Nullable, Vector2Like } from 'shared'
 import { WasmInjector } from '../core/wasm-injector'
 
 export enum MemoryLocation {
-  RELATIVE_MAP_X = 0x1c9078, // 1871992
-  RELATIVE_MAP_Y = 0x1c907c, // 1871996
-  MAP_SIZE_LOCATION = 0x1c9080, // 1872000
-  X_LOCATION = 0x2147f0, // 2181096 + 8
-  Y_LOCATION = 0x2147f4, // 2181096 + 12
-  SCALE = 0x2147f8, // 2181096 + 16
-  VIEW_WIDTH = 0x2147fc, // 2181096 + 20
-  VIEW_HEIGHT = 0x214800 // 2181096 + 24
+  RELATIVE_MAP_X = 1857464, // (OLD: 1871992)
+  RELATIVE_MAP_Y = 1857468, // (OLD: 1871996)
+  MAP_SIZE_LOCATION = 1857472, // (OLD: 1872000)
+  X_LOCATION = 2043856 + 8, // (OLD: 2181096 + 8)
+  Y_LOCATION = 2043856 + 12, // (OLD: 2181096 + 12)
+  SCALE = 2043856 + 16, // (OLD: 2181096 + 16)
+  VIEW_WIDTH = 2043856 + 20, // (OLD: 2181096 + 20)
+  VIEW_HEIGHT = 2043856 + 24 // (OLD: 2181096 + 24)
 }
+
+
 
 export class InformationExtractorInjection {
   private static instance: InformationExtractorInjection
