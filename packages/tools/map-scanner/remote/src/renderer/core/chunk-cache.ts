@@ -62,6 +62,12 @@ export class ChunkCache extends EventEmitter<ChunkCacheEventCallbacks> {
     return typeof this.internal[a.chunk.position.toString()] !== 'undefined'
   }
 
+  public remove(id: string): void {
+    if (!this.has(id)) return
+    this.aggregator.remove(this.internal[id].chunk.position)
+    delete this.internal[id]
+  }
+
   public feed(chunk: Chunk): void {
     this.aggregator.feed(chunk)
     this.update(chunk)

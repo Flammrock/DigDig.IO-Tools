@@ -117,6 +117,7 @@ export class ChunkAggregator {
   }
 
   public remove(position: GridVector2): void {
+    if (!this.has(position)) return
     delete this.internal[position.toString()]
   }
 

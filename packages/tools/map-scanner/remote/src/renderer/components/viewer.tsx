@@ -11,7 +11,7 @@ import * as PIXI from 'pixi.js'
 import { Container, useApp, useTick } from '@pixi/react'
 import { Viewport as InternalViewport } from 'pixi-viewport'
 import Viewport from './viewport'
-import ChunkMap from './chunk-map'
+import ChunkMap, { ChunkMapHandle } from './chunk-map'
 import { State } from '../state'
 import { ClientManager } from '../core/client-manager'
 import { ClientEvent } from '../core/client'
@@ -19,10 +19,12 @@ import { ClientEvent } from '../core/client'
 export interface ViewerHandle {
   follow: () => void
   panZoom: () => void
+  delete: () => void
 }
 
 const Viewer = React.forwardRef<ViewerHandle, { state: State }>(({ state }, ref) => {
   const app = useApp()
+  const chunkMapRef = useRef<ChunkMapHandle>(null)
   const viewportRef = useRef<InternalViewport>(null)
   const channel = useChannel('viewer')
   const manager = useMemo(() => new ClientManager(), [channel])
@@ -102,9 +104,15 @@ const Viewer = React.forwardRef<ViewerHandle, { state: State }>(({ state }, ref)
     () => ({
       follow() {
         followModeRef.current = true
+        chunkMapRef.current?.disableSelection()
       },
       panZoom() {
         followModeRef.current = false
+        chunkMapRef.current?.disableSelection()
+      },
+      delete() {
+        followModeRef.current = false
+        chunkMapRef.current?.enableSelection()
       }
     }),
     []
@@ -143,7 +151,7 @@ const Viewer = React.forwardRef<ViewerHandle, { state: State }>(({ state }, ref)
 
   return (
     <Viewport ref={viewportRef}>
-      <ChunkMap cache={state.cache} />
+      <ChunkMap ref={chunkMapRef} cache={state.cache} />
       <Container ref={containerRef} />
     </Viewport>
   )

@@ -28,7 +28,7 @@ const MainContent = styled.div`
   flex: 1;
 `
 
-const ToolIcon = styled.div<{ active?: boolean }>`
+const ToolIcon = styled.div<{ $active?: boolean }>`
   position: relative;
   margin-top: 1px;
   width: 64px;
@@ -39,11 +39,11 @@ const ToolIcon = styled.div<{ active?: boolean }>`
   font-size: 24px;
   font-weight: bold;
   color: #08f;
-  background-color: ${(props) => (props.active ? '#222222' : 'transparent')};
-  border-right: ${(props) => (props.active ? '2px solid #222222' : '1px solid #444')};
+  background-color: ${(props) => (props.$active ? '#222222' : 'transparent')};
+  border-right: ${(props) => (props.$active ? '2px solid #222222' : '1px solid #444')};
   user-select: none;
   &:hover {
-    background-color: ${(props) => (props.active ? '#222222' : '#333')};
+    background-color: ${(props) => (props.$active ? '#222222' : '#333')};
   }
 `
 
@@ -65,7 +65,7 @@ export function App() {
   return (
     <Container>
       <ToolPanel>
-        <ToolIcon onClick={() => setActiveTool(null)} active={!activeTool}>
+        <ToolIcon onClick={() => setActiveTool(null)} $active={!activeTool}>
           <span>
             <i className="cf-regular cf-home"></i>
           </span>
@@ -75,7 +75,7 @@ export function App() {
             is(tool.name) && (
               <Fragment key={index}>
                 <ToolDivider />
-                <ToolIcon onClick={() => setActiveTool(tool)} active={activeTool === tool}>
+                <ToolIcon onClick={() => setActiveTool(tool)} $active={activeTool === tool}>
                   {tool.icon}
                 </ToolIcon>
               </Fragment>

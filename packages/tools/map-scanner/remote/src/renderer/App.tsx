@@ -14,6 +14,7 @@ import { ActionBar, ActionOptions } from './components/action'
 import IconPan from './components/icons/icon-pan'
 import IconFollow from './components/icons/icon-follow'
 import IconExport from './components/icons/icon-export'
+import IconDelete from './components/icons/icon-delete'
 import { ChunkCacheExportType } from './core/chunk-cache'
 
 interface AppProps {
@@ -73,6 +74,13 @@ export const App: React.FC<AppProps> = ({ state }) => {
       icon: <IconPan />,
       onSelect: () => {
         if (viewerRef.current) viewerRef.current.panZoom()
+      }
+    },
+    {
+      name: '(NEW) Delete (try click on chunk)',
+      icon: <IconDelete />,
+      onSelect: () => {
+        if (viewerRef.current) viewerRef.current.delete()
       }
     }
   ]
