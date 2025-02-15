@@ -67,7 +67,7 @@ const createWindow = async (): Promise<void> => {
 
   createWebSocketServer({ window, port })
 
-  Menu.setApplicationMenu(
+  /*Menu.setApplicationMenu(
     Menu.buildFromTemplate([
       {
         label: 'File',
@@ -114,7 +114,7 @@ const createWindow = async (): Promise<void> => {
         ]
       }
     ])
-  )
+  )*/
   window.center()
   window.show()
 
