@@ -8,6 +8,7 @@
 import { Nullable, Vector2Like } from 'shared'
 import { WasmInjector } from '../core/wasm-injector'
 
+/*
 export enum MemoryLocation {
   RELATIVE_MAP_X = 1857464, // (OLD: 1871992)
   RELATIVE_MAP_Y = 1857468, // (OLD: 1871996)
@@ -17,9 +18,18 @@ export enum MemoryLocation {
   SCALE = 2043856 + 16, // (OLD: 2181096 + 16)
   VIEW_WIDTH = 2043856 + 20, // (OLD: 2181096 + 20)
   VIEW_HEIGHT = 2043856 + 24 // (OLD: 2181096 + 24)
+}*/
+
+export enum MemoryLocation {
+  RELATIVE_MAP_X = 415160, // (OLD: 1871992)
+  RELATIVE_MAP_Y = 415164, // (OLD: 1871996)
+  MAP_SIZE_LOCATION = 415168, // (OLD: 1872000)
+  X_LOCATION = 601592 + 8, // (OLD: 2181096 + 8)
+  Y_LOCATION = 601592 + 12, // (OLD: 2181096 + 12)
+  SCALE = 601592 + 16, // (OLD: 2181096 + 16)
+  VIEW_WIDTH = 601592 + 20, // (OLD: 2181096 + 20)
+  VIEW_HEIGHT = 601592 + 24 // (OLD: 2181096 + 24)
 }
-
-
 
 export class InformationExtractorInjection {
   private static instance: InformationExtractorInjection
@@ -92,7 +102,7 @@ export class InformationExtractorInjection {
 
     WasmInjector((instance) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.memory = new DataView((instance.instance.exports as any).Lf.buffer)
+      this.memory = new DataView((instance.instance.exports as any).Mf.buffer)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ;(window as any).memory = this.memory
     })

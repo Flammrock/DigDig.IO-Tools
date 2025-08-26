@@ -68,7 +68,7 @@ export class Scanner extends EventEmitter<ScannerEventCallbacks> {
 
     this.isTakingPicture = false
     this.lastNow = 0
-    this.scanInterval = options?.ScanInterval?.totalMilliseconds() ?? 1000
+    this.scanInterval = options?.ScanInterval?.totalMilliseconds() ?? 50
     this.processDistance = options?.processDistance ?? 1
     this.dispatcher = new Dispatcher()
 
@@ -88,7 +88,6 @@ export class Scanner extends EventEmitter<ScannerEventCallbacks> {
       this.dispatcher.emit(ScannerEvent.PlayerPosition, { x: px, y: py })
       // We have always this relation : extractor.mapSize * chunkSize.width / (extractor.mapSize * hiddenScale) == 1026
     })
-
     const chunkInterceptor: CTXTrackerCallback<CTXTrackerMethod.DrawImage> = (ctx, args) => {
       if (this.isTakingPicture) {
         if (Chunk.isChunk(args)) {
@@ -120,9 +119,9 @@ export class Scanner extends EventEmitter<ScannerEventCallbacks> {
           const y = Math.round(ry / chunkSize.height)
 
           // Check if already scanned, if so then abort
-          const pos = new GridVector2(x, y).toString()
-          if (typeof cache[pos] !== 'undefined') return
-          cache[pos] = true
+          //const pos = new GridVector2(x, y).toString()
+          //if (typeof cache[pos] !== 'undefined') return
+          //cache[pos] = true
 
           // Player position in the grid space
           const px = Math.round(extractor.position.x / 1026 - 1)
@@ -130,9 +129,9 @@ export class Scanner extends EventEmitter<ScannerEventCallbacks> {
 
           // We abort the process if this chunk is too far (for performance issues)
           // Maybe send the process to a web worker to not overload the ui thread
-          if (this.processDistance > 0 && Math.hypot(x - px, y - py) > this.processDistance) {
-            return
-          }
+          //if (this.processDistance > 0 && Math.hypot(x - px, y - py) > this.processDistance) {
+          //  return
+          //}
 
           // Note: the chunkSize computed above and the ChunkSize constant declared in chunk.ts
           // must not be confused, ChunkSize is the size of the image 64x64 pixels
