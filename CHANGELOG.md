@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.2.1...v1.2.2) (2025-08-26)
+
+
+### Bug Fixes
+
+* **injection:** new memory location due to digdig recompilation ([7fe83fb](https://github.com/Flammrock/DigDig.IO-Tools/commit/7fe83fbd688c1729de9e8e5e14ad00ab7309920c))
+
 ## [1.2.1](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.2.0...v1.2.1) (2025-02-15)
 
 
