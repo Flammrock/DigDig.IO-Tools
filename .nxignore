@@ -1,0 +1,6 @@
+.old/**
+dist/**
+reports/**
+.local/**
+apps/desktop/src-tauri/target/**
+apps/desktop/src-tauri/gen/**

@@ -1,0 +1,31 @@
+[package]
+name = "digdig-desktop"
+version = "2.0.0" # x-release-please-version
+description = "DigDig live map viewer"
+edition = "2021"
+
+[package.metadata.tauri-winres]
+FileVersion = "2.0.0.0" # x-release-please-version
+ProductVersion = "2.0.0.0" # x-release-please-version
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+reqwest = { version = "0.12", default-features = false, features = ["json"] }
+rfd = "=0.17.2"
+tempfile = "3"
+axum = "0.8"
+tokio = { version = "1", features = ["net", "time", "sync"] }
+getrandom = "0.3"
+base64 = "0.22"
+subtle = "2"
+arboard = { version = "3", default-features = false }
+open = "5"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging"] }

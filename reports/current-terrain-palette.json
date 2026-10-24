@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "analyzedAt": "2026-10-24T01:08:12.839Z",
+  "wasmSha256": "8ff0e9d2bc58c6f9c52ef4fe2ee99173aa577bd51dc264cbef0b02e1f298f58d",
+  "javascriptSha256": "3740ee1f2f689c5f0f03e7f6c39e55fc87c0b257b2e2d10014c9ddaaf5b5f500",
+  "scope": "Read-only inspection of original data segments and decoded instructions; no game module executed or modified.",
+  "reference": {
+    "palette": ".old/packages/shared/src/game/ore-palette.ts",
+    "comparison": ".old/packages/shared/src/core/color.ts",
+    "oldRule": "Math.hypot(deltaR,deltaG,deltaB) < 40, only alpha255; first match wins.",
+    "difference": "Old palette did not include Dirt; current Bedrock is based on17gray rather than0black."
+  },
+  "materials": [
+    {
+      "id": 1,
+      "name": "Amethyst",
+      "rgb": [
+        184,
+        52,
+        186
+      ],
+      "paletteAddress": 72688,
+      "suggestedEuclideanRadius": 24
+    },
+    {
+      "id": 2,
+      "name": "Gold",
+      "rgb": [
+        168,
+        161,
+        22
+      ],
+      "paletteAddress": 72692,
+      "suggestedEuclideanRadius": 24
+    },
+    {
+      "id": 3,
+      "name": "Dirt",
+      "rgb": [
+        120,
+        68,
+        0
+      ],
+      "paletteAddress": 72696,
+      "suggestedEuclideanRadius": 24
+    },
+    {
+      "id": 5,
+      "name": "Bedrock",
+      "rgb": [
+        17,
+        17,
+        17
+      ],
+      "paletteAddress": 72704,
+      "suggestedEuclideanRadius": 4
+    },
+    {
+      "id": 6,
+      "name": "Uranium",
+      "rgb": [
+        52,
+        168,
+        50
+      ],
+      "paletteAddress": 72708,
+      "suggestedEuclideanRadius": 24
+    },
+    {
+      "id": 7,
+      "name": "Lava",
+      "rgb": [
+        173,
+        26,
+        7
+      ],
+      "paletteAddress": 72712,
+      "suggestedEuclideanRadius": 24
+    },
+    {
+      "id": 8,
+      "name": "Diamond",
+      "rgb": [
+        50,
+        168,
+        160
+      ],
+      "paletteAddress": 72716,
+      "suggestedEuclideanRadius": 24
+    },
+    {
+      "id": 9,
+      "name": "Quartz",
+      "rgb": [
+        221,
+        221,
+        221
+      ],
+      "paletteAddress": 72720,
+      "suggestedEuclideanRadius": 24
+    }
+  ],
+  "excluded": [
+    {
+      "materialId": 4,
+      "name": "Empty / dug background",
+      "rgb": [
+        34,
+        34,
+        34
+      ],
+      "evidence": "f1409 special-cases material4 instead of its duplicated brown table entry; f486 returns34gray unchanged."
+    },
+    {
+      "name": "Fog",
+      "baseRgb": [
+        51,
+        51,
+        51
+      ],
+      "emittedChannelRange": [
+        48,
+        51
+      ],
+      "evidence": "f1407 produces opaque gray51 and callsf486 for coordinate-derived noise."
+    },
+    {
+      "name": "Maze fog",
+      "baseRgb": [
+        47,
+        47,
+        47
+      ],
+      "emittedChannelRange": [
+        44,
+        47
+      ],
+      "evidence": "f1407 flag16 branch emits gray47, then callsf486."
+    }
+  ],
+  "evidence": [
+    "The active WASM data region at72688 holds nine little-endian0xRRGGBB entries. f1409 indexes it by(materialId-1)*4.",
+    "f1409 builds64x64 materialcanvas at chunk+2592. Pixels rejected by exploration/occupancy masks become transparent.",
+    "f486 multiplies each RGB channel by a shared coordinate-derivedfactor in[0.95,1], then truncates. It preserves34gray exactly.",
+    "f1407 builds64x64 fogcanvas at chunk+2752; unknowncells receive ditheredgray51 or47 and knowncells aretransparent.",
+    "f1408 constructs rememberedterrain overlays from these canvases. f1375 draws its result at half current globalAlpha, explaining tinted composite colors.",
+    "Material names other thanDirt are correlated with the preservedreferencepalette and game semantics; Dirt is the defaultground ID3 and its brown color is present in livecapturedtiles.",
+    "Rawcanvaspixels must be classified before layer/globalAlpha composition; compositing first tints materialcolors towardfoggray.",
+    "Suggestedradius24 covers maximum5percentdarkening even forQuartz (perchannel221to209/210); Bedrock uses4 to prevent empty/fog falsematches. These are deliberate classifier choices, not thresholds extracted fromthegame."
+  ],
+  "liveCompositeObservation": {
+    "clientId": "dd501ee7-51d4-45fd-9628-1a259dfc8537",
+    "tileCount": 101,
+    "capturedAt": "2026-10-24T01:08:12.175Z",
+    "topColors": [
+      {
+        "rgba": [
+          49,
+          49,
+          49,
+          255
+        ],
+        "count": 105357
+      },
+      {
+        "rgba": [
+          50,
+          50,
+          50,
+          255
+        ],
+        "count": 103692
+      },
+      {
+        "rgba": [
+          48,
+          48,
+          48,
+          255
+        ],
+        "count": 57718
+      },
+      {
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "count": 41696
+      },
+      {
+        "rgba": [
+          65,
+          47,
+          24,
+          255
+        ],
+        "count": 29601
+      },
+      {
+        "rgba": [
+          66,
+          47,
+          24,
+          255
+        ],
+        "count": 29158
+      },
+      {
+        "rgba": [
+          65,
+          46,
+          23,
+          255
+        ],
+        "count": 16104
+      },
+      {
+        "rgba": [
+          84,
+          58,
+          24,
+          255
+        ],
+        "count": 7567
+      },
+      {
+        "rgba": [
+          82,
+          57,
+          24,
+          255
+        ],
+        "count": 6352
+      },
+      {
+        "rgba": [
+          81,
+          56,
+          23,
+          255
+        ],
+        "count": 4920
+      },
+      {
+        "rgba": [
+          83,
+          57,
+          24,
+          255
+        ],
+        "count": 2457
+      },
+      {
+        "rgba": [
+          83,
+          58,
+          24,
+          255
+        ],
+        "count": 1310
+      },
+      {
+        "rgba": [
+          117,
+          66,
+          0,
+          255
+        ],
+        "count": 870
+      },
+      {
+        "rgba": [
+          115,
+          65,
+          0,
+          255
+        ],
+        "count": 849
+      },
+      {
+        "rgba": [
+          119,
+          67,
+          0,
+          255
+        ],
+        "count": 824
+      },
+      {
+        "rgba": [
+          118,
+          67,
+          0,
+          255
+        ],
+        "count": 662
+      },
+      {
+        "rgba": [
+          114,
+          64,
+          0,
+          255
+        ],
+        "count": 595
+      },
+      {
+        "rgba": [
+          116,
+          66,
+          0,
+          255
+        ],
+        "count": 474
+      },
+      {
+        "rgba": [
+          116,
+          65,
+          0,
+          255
+        ],
+        "count": 395
+      },
+      {
+        "rgba": [
+          108,
+          36,
+          27,
+          255
+        ],
+        "count": 343
+      },
+      {
+        "rgba": [
+          110,
+          37,
+          27,
+          255
+        ],
+        "count": 330
+      },
+      {
+        "rgba": [
+          106,
+          35,
+          26,
+          255
+        ],
+        "count": 275
+      },
+      {
+        "rgba": [
+          114,
+          65,
+          0,
+          255
+        ],
+        "count": 252
+      },
+      {
+        "rgba": [
+          118,
+          66,
+          0,
+          255
+        ],
+        "count": 228
+      },
+      {
+        "rgba": [
+          111,
+          37,
+          27,
+          255
+        ],
+        "count": 158
+      }
+    ]
+  }
+}

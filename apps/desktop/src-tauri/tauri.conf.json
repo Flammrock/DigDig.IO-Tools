@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "DigDig Map Observatory",
+  "identifier": "io.digdig.tools.viewer",
+  "build": {
+    "beforeDevCommand": "npm run web:dev",
+    "beforeBuildCommand": "node ../../tools/build-release-userscript.mjs && npm run web:build",
+    "devUrl": "http://127.0.0.1:4318",
+    "frontendDist": "../../../dist/desktop"
+  },
+  "app": {
+    "windows": [{
+      "label": "main",
+      "title": "DigDig · Map Observatory",
+      "width": 1280,
+      "height": 840,
+      "minWidth": 400,
+      "minHeight": 320,
+      "backgroundColor": "#0b1118"
+    }],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; img-src 'self' data:; connect-src ipc: http://ipc.localhost",
+      "devCsp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; img-src 'self' data:; connect-src ipc: http://ipc.localhost http://127.0.0.1:4318 ws://127.0.0.1:4318"
+    }
+  },
+  "bundle": { "active": false, "publisher": "Flammrock", "icon": ["icons/icon.ico", "icons/icon.png"] }
+}

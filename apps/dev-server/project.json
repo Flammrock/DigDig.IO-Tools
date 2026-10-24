@@ -1,0 +1,14 @@
+{
+  "name": "dev-server",
+  "projectType": "application",
+  "sourceRoot": "apps/dev-server/src",
+  "implicitDependencies": ["terrain"],
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --test apps/dev-server/test/*.test.mjs"
+      }
+    }
+  }
+}

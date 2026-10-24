@@ -1,0 +1,8 @@
+{
+  "name": "terrain",
+  "projectType": "library",
+  "sourceRoot": "packages/terrain/src",
+  "targets": {
+    "test": { "command": "node --test packages/terrain/test/*.test.mjs" }
+  }
+}

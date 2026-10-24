@@ -1,0 +1,225 @@
+DigDig static WASM inspection
+============================
+
+WASM file: C:\Users\flamm\Downloads\digdigio-old-snapshot\client.wasm
+WASM bytes: 2172490
+WASM SHA-256: f33b4b100c2b520eecbe3012a0125385975fc64f7c45864086ce7258ed471ff2
+JavaScript file: C:\Users\flamm\Downloads\digdigio-old-snapshot\client.js
+JavaScript SHA-256: cc621407f91c4b626ec107e888c02ee7da5ced4d54eb6eb91acfc13965176c63
+
+Method: decode with WABT; inspect instructions without instantiating the module or running its JavaScript.
+WAT function names are generated for this file and are not stable identifiers across builds.
+Defined functions decoded: 3701
+
+Memory declarations and exports:
+  (memory $Lf 4096 4096)
+  (export "Lf" (memory $Lf))
+
+All export declarations:
+  (export "Lf" (memory $Lf))
+  (export "Mf" (func $Mf))
+  (export "Nf" (func $Nf))
+  (export "Of" (func $Of))
+  (export "Pf" (func $Pf))
+  (export "Qf" (func $Qf))
+  (export "Rf" (func $Rf))
+  (export "Sf" (func $Sf))
+  (export "Tf" (func $Tf))
+  (export "Uf" (func $Uf))
+  (export "Vf" (func $Vf))
+  (export "Wf" (func $Wf))
+  (export "Xf" (func $Xf))
+  (export "Yf" (func $Yf))
+  (export "Zf" (func $Zf))
+  (export "_f" (func $_f))
+  (export "$f" (func $$f))
+  (export "ag" (func $ag))
+  (export "bg" (func $bg))
+  (export "cg" (func $cg))
+  (export "dg" (func $dg))
+  (export "eg" (table $eg))
+  (export "fg" (func $fg))
+  (export "gg" (func $gg))
+  (export "hg" (func $hg))
+  (export "ig" (func $ig))
+  (export "jg" (func $jg))
+  (export "kg" (func $kg))
+  (export "lg" (func $lg))
+  (export "mg" (func $mg))
+  (export "ng" (func $ng))
+
+Legacy coordinate address evidence:
+Counts below include only decoded loads with an immediately preceding i32.const base.
+An absent direct load does not prove an address is unused: pointers and computed addresses are possible.
+
+Last active legacy enum (unverified for this binary)
+  415160: direct loads=0, i32.const occurrences=0; functions=(none)
+  415164: direct loads=0, i32.const occurrences=0; functions=(none)
+  415168: direct loads=0, i32.const occurrences=0; functions=(none)
+  601600: direct loads=0, i32.const occurrences=0; functions=(none)
+  601604: direct loads=0, i32.const occurrences=0; functions=(none)
+  601608: direct loads=0, i32.const occurrences=0; functions=(none)
+  601612: direct loads=0, i32.const occurrences=0; functions=(none)
+  601616: direct loads=0, i32.const occurrences=0; functions=(none)
+
+Commented older legacy enum (unverified for this binary)
+  1857464: direct loads=3, i32.const occurrences=7; functions=$f1112, $f3418
+  1857468: direct loads=2, i32.const occurrences=3; functions=$f3418
+  1857472: direct loads=3, i32.const occurrences=7; functions=$f1112, $f3418
+  2043864: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043868: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043872: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043876: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043880: direct loads=0, i32.const occurrences=0; functions=(none)
+
+Oldest addresses in legacy comments (unverified for this binary)
+  1871992: direct loads=0, i32.const occurrences=0; functions=(none)
+  1871996: direct loads=0, i32.const occurrences=0; functions=(none)
+  1872000: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181104: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181108: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181112: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181116: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181120: direct loads=0, i32.const occurrences=0; functions=(none)
+
+Decoded coordinate signature candidates:
+Pattern: viewport scale selection + camera scale + two origin-relative screen coordinates.
+Captures map addresses and local identifiers; checks neighboring x/y/size globals.
+Camera field offsets and scaling constants remain assumptions from the reference build.
+Candidate count: 1
+  {"function":"$f3418","instruction":349,"cameraLocal":"$p0","originX":1857464,"originY":1857468,"mapSize":1857472,"cameraFields":{"x":8,"y":12,"scale":16,"viewWidth":20,"viewHeight":24}}
+  Evidence excerpt:
+    local.get $p0
+    i32.load offset=24
+    local.tee $l5
+    f32.convert_i32_s
+    f32.const 0x1.e573acp-11
+    f32.mul
+    local.tee $l8
+    local.get $p0
+    i32.load offset=20
+    local.tee $l6
+    f32.convert_i32_s
+    f32.const 0x1.111112p-11
+    f32.mul
+    local.tee $l7
+    local.get $l7
+    local.get $l8
+    f32.lt
+    select
+    local.get $p0
+    f32.load offset=16
+    f32.mul
+    local.tee $l8
+    i32.const 1857472
+    f32.load
+    f32.mul
+    f64.promote_f32
+    local.set $p2
+    local.get $l5
+    f64.convert_i32_s
+    f64.const 0x1p-1
+    f64.mul
+    local.get $l8
+    i32.const 1857468
+    f32.load
+    local.get $p0
+    f32.load offset=12
+    f32.sub
+    f32.mul
+    f64.promote_f32
+    f64.add
+    f32.demote_f64
+    f64.promote_f32
+    local.set $l13
+    local.get $l6
+    f64.convert_i32_s
+    f64.const 0x1p-1
+    f64.mul
+    local.get $l8
+    i32.const 1857464
+    f32.load
+    local.get $p0
+    f32.load offset=8
+    f32.sub
+    f32.mul
+    f64.promote_f32
+    f64.add
+    f32.demote_f64
+    f64.promote_f32
+    local.set $l12
+Status: one static candidate; runtime confirmation and camera base resolution still required for a new build.
+
+Additional manually traced evidence for this exact archived SHA-256:
+  $f1088 and exported $ag call $f844 with i32.const 1857672.
+  $f844 constructs a camera subobject at parameter + 186184 (vtable address 49340).
+  $f3418 subtracts 186184 from its camera parameter to access the enclosing object.
+  Therefore the reference camera base is 1857672 + 186184 = 2043856.
+  Reference fields: x=2043864, y=2043868, scale=2043872, width=2043876, height=2043880.
+  This supports the commented enum, not the last active enum or the oldest comment values.
+  $f3418 confirms (origin - camera) * scale + viewport / 2 using f32/f64 conversions.
+  The exact normalized-position division formula has not been independently located.
+  The loader assigns memory from m.asm.Lf; m.asm.Mf is a startup function.
+  These numbers describe only this archived binary, never the current game.
+
+Arithmetic neighborhoods touching legacy addresses (bounded excerpts):
+
+  $f3418, instruction 107, absolute f32.load address 1857472
+    f32.demote_f64
+    local.tee $l7
+    f32.store
+    i32.const 1857472
+    i32.const 1857472
+    f32.load
+    f64.promote_f32
+    local.tee $l13
+    local.get $l9
+    local.get $l10
+    f32.mul
+    f64.promote_f32
+    local.tee $l12
+    f64.sub
+    f64.abs
+    f64.const 0x1.ad7f29abcaf48p-24
+    f64.lt
+    if $I3 (result f64
+    local.get $l12
+    else
+
+  $f3418, instruction 372, absolute f32.load address 1857472
+    local.get $p0
+    f32.load offset=16
+    f32.mul
+    local.tee $l8
+    i32.const 1857472
+    f32.load
+    f32.mul
+    f64.promote_f32
+    local.set $p2
+    local.get $l5
+    f64.convert_i32_s
+    f64.const 0x1p-1
+    f64.mul
+    local.get $l8
+    i32.const 1857468
+    f32.load
+    local.get $p0
+    f32.load offset=12
+    f32.sub
+    f32.mul
+
+Loader evidence (bounded excerpts):
+  .asm.Lf: turn Pc(a,b,c,d)}};(function(){function a(e){m.asm=e.exports;yc=m.asm.Lf;fb=e=yc.buffer;m.HEAP8=Y=new Int8Array(e);m.HEAP16=va=new Int16Array(e);m.HEAP32=l=new Int32Ar
+  .asm.Mf: rray(e);m.HEAPF64=da=new Float64Array(e);Lb=m.asm.eg;lc.unshift(m.asm.Mf);ta("wasm-instantiate")}function b(e){a(e.instance)}function c(e){return Bc().then(function(g)
+  instantiateStreaming: r: "+e),!1}(function(){return ya||"function"!=typeof WebAssembly.instantiateStreaming||Eb(ja)||"function"!=typeof fetch?c(b):fetch(ja,{credentials:"same-origin"}).then(function(e){
+  client.wasm: da,Lb,oc=[],lc=[],Qc=[],Tc=[],nc=[],ra=0,hb=null,xa=null;var ja="client.wasm";Eb(ja)||(ja=Ac(ja));var G, T,Ub={148400:()=>{if("undefined"==typeof OffscreenCanvas)return!1;
+  Archive wrapper detected: true
+
+Interpretation and next step:
+A sequence such as "48 8D 05 ?? ?? ?? ?? 48 89 01" describes x86 machine code, not portable WASM instructions.
+WASM operands use variable-length LEB128 encoding; address changes can change instruction byte lengths.
+Match decoded opcode structure with captured addresses/local relationships, then require a unique candidate and runtime validation.
+A shared arithmetic sequence alone is not a proof of semantic meaning or a stable cross-version signature.
+Use the archived binary as a labelled reference; compare a current JS/WASM pair before claiming current offsets.
+Validate candidate coordinates against movement, zoom, resize, map origin and map-size observations.
+Never silently choose the first match when zero or multiple candidates remain.

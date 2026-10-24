@@ -1,0 +1,15 @@
+{
+  "name": "desktop",
+  "projectType": "application",
+  "sourceRoot": "apps/desktop/src",
+  "implicitDependencies": ["dev-server", "terrain"],
+  "targets": {
+    "dev": { "command": "npm run dev --workspace @digdig/desktop", "continuous": true, "cache": false },
+    "web-dev": { "command": "npm run web:dev --workspace @digdig/desktop", "continuous": true, "cache": false },
+    "build": { "command": "npm run web:build --workspace @digdig/desktop", "outputs": ["{workspaceRoot}/dist/desktop"] },
+    "native-build": { "command": "npm run build --workspace @digdig/desktop", "cache": false },
+    "native-check": { "command": "cargo check --manifest-path apps/desktop/src-tauri/Cargo.toml", "cache": false },
+    "typecheck": { "command": "tsc -p apps/desktop/tsconfig.json" },
+    "test": { "command": "node --test apps/desktop/test/*.test.mjs" }
+  }
+}

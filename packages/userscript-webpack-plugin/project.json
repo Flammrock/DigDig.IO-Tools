@@ -1,0 +1,11 @@
+{
+  "name": "userscript-webpack-plugin",
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --test packages/userscript-webpack-plugin/test/*.test.mjs"
+      }
+    }
+  }
+}

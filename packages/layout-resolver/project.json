@@ -1,0 +1,9 @@
+{
+  "name": "layout-resolver",
+  "projectType": "library",
+  "sourceRoot": "packages/layout-resolver/src",
+  "implicitDependencies": ["wasm-analysis"],
+  "targets": {
+    "test": { "command": "node --test packages/layout-resolver/test/*.test.mjs" }
+  }
+}

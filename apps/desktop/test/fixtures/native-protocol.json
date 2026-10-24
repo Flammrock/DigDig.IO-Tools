@@ -1,0 +1,3167 @@
+[
+  {
+    "at": 1000,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 0,
+      "reset": true,
+      "clients": []
+    }
+  },
+  {
+    "at": 1000,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "a-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "eEQA/wAAAAA="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 1000,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 1,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1000,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 1050,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "b-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "b",
+            "x": 64,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "3d3d/wAAAAA="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 1050,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [
+      [
+        "since",
+        "1"
+      ]
+    ],
+    "expected": {
+      "revision": 2,
+      "reset": false,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1000,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": false,
+          "tiles": [
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "3d3d/wAAAAA="
+            }
+          ]
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1050,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        }
+      ]
+    }
+  },
+  {
+    "at": 1100,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "c-fixture",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "fixture",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": null,
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "3d3d/93d3f8="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 1100,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 3,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1000,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            },
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "3d3d/wAAAAA="
+            }
+          ]
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1050,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 1100,
+    "auto": true,
+    "route": "/telemetry/markers",
+    "body": {
+      "clientId": "a-game",
+      "marker": {
+        "id": "mine",
+        "x": 3,
+        "y": 4,
+        "label": "Return here"
+      }
+    },
+    "query": [],
+    "expected": {
+      "saved": true,
+      "clientId": "a-game",
+      "marker": {
+        "id": "mine",
+        "x": 3,
+        "y": 4,
+        "label": "Return here"
+      }
+    }
+  },
+  {
+    "at": 1100,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [
+      [
+        "since",
+        "3"
+      ]
+    ],
+    "expected": {
+      "revision": 4,
+      "reset": false,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1000,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1050,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        }
+      ]
+    }
+  },
+  {
+    "at": 1150,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "b-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "AAAAAN3d3f8="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 1150,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 5,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1000,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [
+            "b",
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "3d3d/wAAAAA="
+            },
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 2,
+              "rgba": "eEQA/93d3f8="
+            }
+          ]
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "a-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "AAAAAAAAAAA="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [
+      [
+        "since",
+        "5"
+      ]
+    ],
+    "expected": {
+      "revision": 6,
+      "reset": false,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1200,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [
+            "b",
+            "a"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        }
+      ]
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry/merge",
+    "body": {
+      "clientId": "b-game",
+      "document": {
+        "format": "digdig-chunks",
+        "version": 1,
+        "savedAt": "2026-10-24T12:00:00.000Z",
+        "source": {
+          "label": "Protocol fixture",
+          "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "terrainMode": "materials-v1",
+          "world": {
+            "centerX": 0,
+            "centerY": 0,
+            "radius": 500
+          }
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "3d3d/3hEAP8=",
+            "observedPixels": 2
+          },
+          {
+            "key": "b",
+            "x": 64,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "eEQA/3hEAP8=",
+            "observedPixels": 2
+          }
+        ],
+        "markers": [
+          {
+            "id": "mine",
+            "x": 9,
+            "y": 9,
+            "label": "Older note"
+          },
+          {
+            "id": "other",
+            "x": 2,
+            "y": 3,
+            "label": "Saved note"
+          }
+        ]
+      }
+    },
+    "query": [],
+    "expected": {
+      "merged": true,
+      "clientId": "b-game",
+      "tiles": 1,
+      "markers": 1
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 7,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1200,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "other",
+              "x": 2,
+              "y": 3,
+              "label": "Saved note"
+            }
+          ],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 2,
+              "rgba": "eEQA/93d3f8="
+            },
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 2,
+              "rgba": "3d3d/3hEAP8="
+            }
+          ]
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry/merge",
+    "body": {
+      "clientId": "a-game",
+      "document": {
+        "format": "digdig-chunks",
+        "version": 1,
+        "savedAt": "2026-10-24T12:00:00.000Z",
+        "source": {
+          "label": "Protocol fixture",
+          "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "terrainMode": "materials-v1",
+          "world": {
+            "centerX": 0,
+            "centerY": 0,
+            "radius": 500
+          }
+        },
+        "tiles": [
+          {
+            "key": "new",
+            "x": 200,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "eEQA/3hEAP8=",
+            "observedPixels": 2
+          },
+          {
+            "key": "a",
+            "x": 500,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "eEQA/3hEAP8=",
+            "observedPixels": 2
+          }
+        ],
+        "markers": []
+      }
+    },
+    "query": [],
+    "error": true
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 7,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1200,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "other",
+              "x": 2,
+              "y": 3,
+              "label": "Saved note"
+            }
+          ],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 2,
+              "rgba": "eEQA/93d3f8="
+            },
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 2,
+              "rgba": "3d3d/3hEAP8="
+            }
+          ]
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry/delete",
+    "body": {
+      "clientId": "b-game",
+      "tileKeys": [
+        "b"
+      ],
+      "markerIds": [
+        "other"
+      ]
+    },
+    "query": [],
+    "expected": {
+      "deleted": true,
+      "clientId": "b-game",
+      "tiles": 1,
+      "markers": 1
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [
+      [
+        "since",
+        "5"
+      ]
+    ],
+    "expected": {
+      "revision": 8,
+      "reset": false,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1200,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        }
+      ]
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry/clear",
+    "body": {
+      "clientId": "a-game"
+    },
+    "query": [],
+    "expected": {
+      "cleared": true,
+      "clientId": "a-game"
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [
+      [
+        "since",
+        "5"
+      ]
+    ],
+    "expected": {
+      "revision": 9,
+      "reset": false,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1200,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [],
+          "resetTiles": true,
+          "tiles": []
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": false,
+          "tiles": []
+        }
+      ]
+    }
+  },
+  {
+    "at": 1200,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "a-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "eEQA/wAAAAA="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 7200,
+    "auto": false,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 10,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "a-game",
+          "mapId": "game-shared",
+          "firstSeen": 1000,
+          "lastSeen": 1200,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            }
+          ]
+        },
+        {
+          "clientId": "b-game",
+          "mapId": "game-shared",
+          "firstSeen": 1050,
+          "lastSeen": 1150,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": false,
+          "tiles": [],
+          "markers": []
+        },
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 7200,
+    "auto": false,
+    "route": "/telemetry/cleanup",
+    "body": {},
+    "query": [],
+    "expected": {
+      "removed": [
+        "a-game",
+        "b-game"
+      ]
+    }
+  },
+  {
+    "at": 7200,
+    "auto": false,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 11,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        },
+        {
+          "clientId": "game-map",
+          "mapId": "game-shared",
+          "mapOnly": true,
+          "firstSeen": 1200,
+          "lastSeen": 1200,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "waiting",
+            "message": "Shared game map. Waiting for a game session.",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            }
+          ],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 7200,
+    "auto": false,
+    "route": "/telemetry/markers",
+    "body": {
+      "clientId": "game-map",
+      "marker": {
+        "id": "retained",
+        "x": 0,
+        "y": 0,
+        "label": "No sessions needed"
+      }
+    },
+    "query": [],
+    "expected": {
+      "saved": true,
+      "clientId": "game-map",
+      "marker": {
+        "id": "retained",
+        "x": 0,
+        "y": 0,
+        "label": "No sessions needed"
+      }
+    }
+  },
+  {
+    "at": 7300,
+    "auto": false,
+    "route": "/reports",
+    "body": {
+      "clientId": "d-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "b",
+            "x": 64,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "eEQA/wAAAAA="
+          }
+        ]
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 7300,
+    "auto": false,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 13,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        },
+        {
+          "clientId": "d-game",
+          "mapId": "game-shared",
+          "firstSeen": 7300,
+          "lastSeen": 7300,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "retained",
+              "x": 0,
+              "y": 0,
+              "label": "No sessions needed"
+            }
+          ],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            },
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 13300,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "e-game",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": []
+      }
+    },
+    "query": []
+  },
+  {
+    "at": 13300,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 15,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "c-fixture",
+          "mapId": "fixture:c-fixture",
+          "firstSeen": 1100,
+          "lastSeen": 1100,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "fixture",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": null,
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": null,
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [],
+          "tileKeys": [
+            "a"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "rgba": "3d3d/93d3f8="
+            }
+          ]
+        },
+        {
+          "clientId": "e-game",
+          "mapId": "game-shared",
+          "firstSeen": 13300,
+          "lastSeen": 13300,
+          "stale": false,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "live",
+            "message": "Protocol fixture",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "player": {
+              "x": 10,
+              "y": 20,
+              "normalizedX": 0.02,
+              "normalizedY": 0.04
+            },
+            "camera": {
+              "x": 10,
+              "y": 20,
+              "scale": 1,
+              "width": 800,
+              "height": 600
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "retained",
+              "x": 0,
+              "y": 0,
+              "label": "No sessions needed"
+            }
+          ],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            },
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 314300,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 16,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "game-map",
+          "mapId": "game-shared",
+          "mapOnly": true,
+          "firstSeen": 13300,
+          "lastSeen": 13300,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "waiting",
+            "message": "Shared game map. Waiting for a game session.",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "retained",
+              "x": 0,
+              "y": 0,
+              "label": "No sessions needed"
+            }
+          ],
+          "tileKeys": [
+            "a",
+            "b"
+          ],
+          "resetTiles": true,
+          "tiles": [
+            {
+              "key": "a",
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            },
+            {
+              "key": "b",
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 64,
+              "pixelWidth": 2,
+              "pixelHeight": 1,
+              "observedPixels": 1,
+              "rgba": "eEQA/wAAAAA="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "at": 314300,
+    "auto": true,
+    "route": "/telemetry/clear",
+    "body": {
+      "clientId": "game-map"
+    },
+    "query": [],
+    "expected": {
+      "cleared": true,
+      "clientId": "game-map"
+    }
+  },
+  {
+    "at": 314300,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 17,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "game-map",
+          "mapId": "game-shared",
+          "mapOnly": true,
+          "firstSeen": 13300,
+          "lastSeen": 13300,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "waiting",
+            "message": "Shared game map. Waiting for a game session.",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "retained",
+              "x": 0,
+              "y": 0,
+              "label": "No sessions needed"
+            }
+          ],
+          "tileKeys": [],
+          "resetTiles": true,
+          "tiles": []
+        }
+      ]
+    }
+  },
+  {
+    "at": 314300,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "invalid",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-02-30T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": []
+      }
+    },
+    "query": [],
+    "error": true
+  },
+  {
+    "at": 314300,
+    "auto": true,
+    "route": "/reports",
+    "body": {
+      "clientId": "invalid",
+      "kind": "map-frame",
+      "report": {
+        "version": 1,
+        "source": "game",
+        "status": "live",
+        "message": "Protocol fixture",
+        "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "capturedAt": "2026-10-24T12:00:00.000Z",
+        "terrainMode": "materials-v1",
+        "world": {
+          "centerX": 0,
+          "centerY": 0,
+          "radius": 500
+        },
+        "player": {
+          "x": 10,
+          "y": 20,
+          "normalizedX": 0.02,
+          "normalizedY": 0.04
+        },
+        "camera": {
+          "x": 10,
+          "y": 20,
+          "scale": 1,
+          "width": 800,
+          "height": 600
+        },
+        "tiles": [
+          {
+            "key": "a",
+            "x": 0,
+            "y": 0,
+            "width": 64,
+            "height": 64,
+            "pixelWidth": 2,
+            "pixelHeight": 1,
+            "rgba": "AQIDAHhEAP8="
+          }
+        ]
+      }
+    },
+    "query": [],
+    "error": true
+  },
+  {
+    "at": 314300,
+    "auto": true,
+    "route": "/telemetry",
+    "query": [],
+    "expected": {
+      "revision": 17,
+      "reset": true,
+      "clients": [
+        {
+          "clientId": "game-map",
+          "mapId": "game-shared",
+          "mapOnly": true,
+          "firstSeen": 13300,
+          "lastSeen": 13300,
+          "stale": true,
+          "frame": {
+            "version": 1,
+            "source": "game",
+            "status": "waiting",
+            "message": "Shared game map. Waiting for a game session.",
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "capturedAt": "2026-10-24T12:00:00.000Z",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            },
+            "tiles": []
+          },
+          "mapData": true,
+          "mapFrame": {
+            "buildHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "terrainMode": "materials-v1",
+            "world": {
+              "centerX": 0,
+              "centerY": 0,
+              "radius": 500
+            }
+          },
+          "markers": [
+            {
+              "id": "mine",
+              "x": 3,
+              "y": 4,
+              "label": "Return here"
+            },
+            {
+              "id": "retained",
+              "x": 0,
+              "y": 0,
+              "label": "No sessions needed"
+            }
+          ],
+          "tileKeys": [],
+          "resetTiles": true,
+          "tiles": []
+        }
+      ]
+    }
+  }
+]

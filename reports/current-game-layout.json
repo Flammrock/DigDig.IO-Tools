@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "status": "unique-static-pattern-live-camera-and-terrain-validated",
+  "sha256": "8ff0e9d2bc58c6f9c52ef4fe2ee99173aa577bd51dc264cbef0b02e1f298f58d",
+  "byteLength": 1964185,
+  "memoryExport": "Mf",
+  "mapX": 1509292,
+  "mapY": 1509296,
+  "mapRadius": 1509300,
+  "cameraPointer": 332320,
+  "cameraOffset": 185632,
+  "cameraVtable": 54080,
+  "cameraFields": {
+    "x": 8,
+    "y": 12,
+    "scale": 16,
+    "width": 20,
+    "height": 24
+  },
+  "scaleMode": "divide-f32",
+  "terrain": {
+    "sourceWidth": 64,
+    "sourceHeight": 64,
+    "worldGridSpacing": 1024,
+    "worldDrawSize": 1026,
+    "worldDrawInset": -1,
+    "drawImageArguments": "source, gridX * 1024 - 1, gridY * 1024 - 1, 1026, 1026"
+  },
+  "sources": {
+    "page": "https://digdig.io/",
+    "wasm": "https://static.digdig.io/2749f7bafff1e95846c87486cda9d7184c0a06bf/client.wasm",
+    "javascript": "https://static.digdig.io/2749f7bafff1e95846c87486cda9d7184c0a06bf/client.js",
+    "javascriptSha256": "3740ee1f2f689c5f0f03e7f6c39e55fc87c0b257b2e2d10014c9ddaaf5b5f500"
+  },
+  "evidence": [
+    "$f2510 instruction 273 uniquely matches viewport division, camera scale, map radius and two origin-relative screen coordinates.",
+    "$f2510 reads map X/Y/radius with f32.load at 1509292/1509296/1509300. Radius times scale is passed to $f474, which emits canvas opcode 31; client.js opcode 31 calls arc.",
+    "$f2510 reads camera x/y/scale via f32.load offsets 8/12/16 and width/height via i32.load offsets 20/24.",
+    "Scale is f32(internalScale * max(f32(f32(height) / 1080), f32(f32(width) / 1920))). Origin screen coordinate is f32(viewport / 2 + f32(f32(origin - camera) * scale)).",
+    "$f2510 obtains the enclosing object by subtracting 185632 from the camera pointer.",
+    "$f997 allocates 258816 bytes, sets vtable 54080 at allocation + 185632, and stores allocation at its parameter + 536.",
+    "$f1387 and exported $ag call $f997 with 331784; therefore the allocation pointer is stored at 331784 + 536 = 332320. It must be reread at runtime; the camera base is not static.",
+    "$f1375 independently loads enclosing object from parent + 544, adds 185632 and reads/writes the camera fields. Parent singleton is 331776, agreeing with pointer address 332320.",
+    "$f1407/$f1409 create 64x64 terrain canvases. $f1375 emits draw rectangles at grid * 1024 - 1 with size 1026 through $f586; client.js opcode 35 calls drawImage with that rectangle.",
+    "These are static findings for this exact binary. Camera coordinates can be smoothed or spectating; identify them as camera/player coordinates until movement is visually validated.",
+    "$f2510 updates mapRadius 1509300 by smoothing toward f32(f32(object + 40) * 0.5 * f32(object + 396)), then uses that updated radius for the rendered circle. The value is dynamic, not a fixed map size. Map X/Y are smoothed renderer values as well.",
+    "$f996 decodes the target diameter/factor from received float32 data. $f1435 independently uses target center offsets 44/52 and the same target radius formula for distance-to-boundary calculations. The current mapRadius recipe tracks the rendered boundary and can lag the physical target while resizing."
+  ],
+  "runtimeValidation": {
+    "validatedAt": "2026-10-24T01:02:46.253Z",
+    "wasmSha256": "8ff0e9d2bc58c6f9c52ef4fe2ee99173aa577bd51dc264cbef0b02e1f298f58d",
+    "terrainTilesObserved": 78,
+    "mapRadius": 8924.984375,
+    "transport": "Firefox Tampermonkey to local Node bridge to Tauri Rust IPC to canvas",
+    "ownerConfirmedVisualResult": true,
+    "coordinateMeaning": "renderer camera; exact local-player identity not independently proven"
+  }
+}

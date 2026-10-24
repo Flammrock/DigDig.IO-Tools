@@ -1,31 +1,32 @@
 {
-  "name": "digdig-workspace",
+  "name": "digdig-tools",
+  "version": "2.0.0",
   "private": true,
-  "version": "1.2.2",
-  "description": "digdig.io userscript workspace",
-  "workspaces": [
-    "packages/*",
-    "packages/tools/**/*"
-  ],
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "npm@11.9.0",
+  "engines": { "node": ">=24.0.0 <25", "npm": ">=11 <12" },
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "yarn run build:custom-font && yarn run build:userscript-plugin && yarn run build:shared && yarn run build:injection && yarn run build:map-scanner-shared && yarn run build:map-scanner-remote && yarn run build:map-scanner-script && yarn run userscript:build && yarn run app:build",
-    "build:userscript-plugin": "yarn workspace userscript-webpack-plugin build",
-    "build:shared": "yarn workspace shared build",
-    "build:injection": "yarn workspace injection build",
-    "build:custom-font": "yarn workspace custom-font build",
-    "build:map-scanner-shared": "yarn workspace map-scanner-shared build",
-    "build:map-scanner-script": "yarn workspace map-scanner-script build",
-    "build:map-scanner-remote": "yarn workspace map-scanner-remote build",
-    "app:start": "yarn workspace electron-app start",
-    "app:build": "yarn workspace electron-app make",
-    "userscript:build": "yarn workspace userscript build"
+    "dev": "nx run userscript:dev",
+    "dev:desktop": "node tools/desktop-dev.mjs",
+    "build": "nx run-many -t build",
+    "build:desktop": "nx run desktop:native-build",
+    "deploy": "node tools/deploy.mjs",
+    "check:versions": "node tools/check-versions.mjs",
+    "typecheck": "nx run-many -t typecheck",
+    "test": "node --test tools/test/*.test.mjs && nx run-many -t test",
+    "clients": "node tools/control.mjs clients",
+    "report": "node tools/control.mjs report",
+    "reload": "node tools/control.mjs reload",
+    "analyze:wasm": "node tools/wasm-analysis/src/analyze.mjs"
   },
-  "keywords": [
-    "digdig.io",
-    "script",
-    "userscript"
-  ],
-  "author": "Flammrock",
-  "license": "MIT"
+  "devDependencies": {
+    "@types/tampermonkey": "5.5.0",
+    "nx": "24.0.1",
+    "ts-loader": "9.6.2",
+    "typescript": "5.9.3",
+    "wabt": "1.0.39",
+    "webpack": "5.112.2"
+  }
 }

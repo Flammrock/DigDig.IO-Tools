@@ -1,0 +1,19 @@
+{
+  "name": "wasm-analysis",
+  "root": "tools/wasm-analysis",
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --test tools/wasm-analysis/test/*.test.mjs"
+      }
+    },
+    "analyze": {
+      "executor": "nx:run-commands",
+      "cache": false,
+      "options": {
+        "command": "node tools/wasm-analysis/src/analyze.mjs"
+      }
+    }
+  }
+}

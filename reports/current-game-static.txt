@@ -1,0 +1,191 @@
+DigDig static WASM inspection
+============================
+
+WASM file: C:\Users\flamm\Documents\.code\.digdig-tools\DigDig.IO-Tools\.local\current-game\client.wasm
+WASM bytes: 1964185
+WASM SHA-256: 8ff0e9d2bc58c6f9c52ef4fe2ee99173aa577bd51dc264cbef0b02e1f298f58d
+JavaScript file: C:\Users\flamm\Documents\.code\.digdig-tools\DigDig.IO-Tools\.local\current-game\client.js
+JavaScript SHA-256: 3740ee1f2f689c5f0f03e7f6c39e55fc87c0b257b2e2d10014c9ddaaf5b5f500
+
+Method: decode with WABT; inspect instructions without instantiating the module or running its JavaScript.
+WAT function names are generated for this file and are not stable identifiers across builds.
+Defined functions decoded: 2873
+
+Memory declarations and exports:
+  (memory $Mf 4096 4096)
+  (export "Mf" (memory $Mf))
+
+All export declarations:
+  (export "Mf" (memory $Mf))
+  (export "Nf" (func $Nf))
+  (export "Of" (func $Of))
+  (export "Pf" (func $Pf))
+  (export "Qf" (func $Qf))
+  (export "Rf" (func $Rf))
+  (export "Sf" (func $Sf))
+  (export "Tf" (func $Tf))
+  (export "Uf" (func $Uf))
+  (export "Vf" (func $Vf))
+  (export "Wf" (func $Wf))
+  (export "Xf" (func $Xf))
+  (export "Yf" (func $Yf))
+  (export "Zf" (func $Zf))
+  (export "_f" (func $_f))
+  (export "$f" (func $$f))
+  (export "ag" (func $ag))
+  (export "bg" (func $bg))
+  (export "cg" (func $cg))
+  (export "dg" (func $dg))
+  (export "eg" (func $eg))
+  (export "fg" (func $fg))
+  (export "gg" (func $gg))
+  (export "hg" (func $hg))
+  (export "ig" (func $ig))
+  (export "jg" (func $jg))
+  (export "kg" (func $kg))
+  (export "lg" (table $lg))
+  (export "mg" (func $mg))
+  (export "ng" (func $ng))
+  (export "og" (func $og))
+  (export "pg" (func $pg))
+  (export "qg" (func $qg))
+  (export "rg" (func $rg))
+  (export "sg" (func $sg))
+  (export "tg" (func $tg))
+  (export "ug" (func $ug))
+
+Legacy coordinate address evidence:
+Counts below include only decoded loads with an immediately preceding i32.const base.
+An absent direct load does not prove an address is unused: pointers and computed addresses are possible.
+
+Last active legacy enum (unverified for this binary)
+  415160: direct loads=0, i32.const occurrences=0; functions=(none)
+  415164: direct loads=0, i32.const occurrences=0; functions=(none)
+  415168: direct loads=0, i32.const occurrences=0; functions=(none)
+  601600: direct loads=0, i32.const occurrences=0; functions=(none)
+  601604: direct loads=0, i32.const occurrences=0; functions=(none)
+  601608: direct loads=0, i32.const occurrences=0; functions=(none)
+  601612: direct loads=0, i32.const occurrences=0; functions=(none)
+  601616: direct loads=0, i32.const occurrences=0; functions=(none)
+
+Commented older legacy enum (unverified for this binary)
+  1857464: direct loads=0, i32.const occurrences=0; functions=(none)
+  1857468: direct loads=0, i32.const occurrences=0; functions=(none)
+  1857472: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043864: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043868: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043872: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043876: direct loads=0, i32.const occurrences=0; functions=(none)
+  2043880: direct loads=0, i32.const occurrences=0; functions=(none)
+
+Oldest addresses in legacy comments (unverified for this binary)
+  1871992: direct loads=0, i32.const occurrences=0; functions=(none)
+  1871996: direct loads=0, i32.const occurrences=0; functions=(none)
+  1872000: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181104: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181108: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181112: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181116: direct loads=0, i32.const occurrences=0; functions=(none)
+  2181120: direct loads=0, i32.const occurrences=0; functions=(none)
+
+Decoded coordinate signature candidates:
+Pattern: viewport scale selection + camera scale + two origin-relative screen coordinates.
+Captures map addresses and local identifiers; checks neighboring x/y/size globals.
+Recognizes both archived reciprocal multiplication and current viewport division forms.
+Camera field offsets and viewport constants are constrained by those traced patterns.
+Candidate count: 1
+  {"function":"$f2510","instruction":273,"cameraLocal":"$p0","originX":1509292,"originY":1509296,"mapSize":1509300,"scaleMode":"viewport-division","cameraFields":{"x":8,"y":12,"scale":16,"viewWidth":20,"viewHeight":24}}
+  Constructor-derived camera pointer candidates: 1
+    {"pointerAddress":332320,"cameraOffset":185632,"cameraVtable":54080,"allocationBytes":258816,"constructor":"$f997","callers":["$f1387","$ag"]}
+  Evidence excerpt:
+    i32.const 1509300
+    f32.load
+    local.get $p0
+    f32.load offset=16
+    local.get $p0
+    i32.load offset=24
+    local.tee $l9
+    f32.convert_i32_s
+    f32.const 0x1.0ep+10
+    f32.div
+    local.tee $l3
+    local.get $p0
+    i32.load offset=20
+    local.tee $l10
+    f32.convert_i32_s
+    f32.const 0x1.ep+10
+    f32.div
+    local.tee $l5
+    local.get $l3
+    local.get $l5
+    f32.gt
+    select
+    f32.mul
+    local.tee $l3
+    f32.mul
+    local.set $l5
+    local.get $l9
+    f64.convert_i32_s
+    f64.const 0x1p-1
+    f64.mul
+    i32.const 1509296
+    f32.load
+    local.get $p0
+    f32.load offset=12
+    f32.sub
+    local.get $l3
+    f32.mul
+    f64.promote_f32
+    f64.add
+    f32.demote_f64
+    local.set $l4
+    local.get $l10
+    f64.convert_i32_s
+    f64.const 0x1p-1
+    f64.mul
+    i32.const 1509292
+    f32.load
+    local.get $p0
+    f32.load offset=8
+    f32.sub
+    local.get $l3
+    f32.mul
+    f64.promote_f32
+    f64.add
+    f32.demote_f64
+    local.set $l3
+    block $B5
+    local.get $p1
+    i32.load8_u offset=48
+Status: one static coordinate candidate; require a unique camera resolver and runtime confirmation before accepting a new build.
+
+Additional manually traced evidence for this exact current SHA-256:
+  $f2510 passes map radius * viewport scale to $f474, which emits canvas opcode 31.
+  client.js opcode 31 calls CanvasRenderingContext2D.arc, confirming radius semantics.
+  Camera coordinates can be smoothed or spectating; live movement still needs visual validation.
+  $f1407/$f1409 allocate 64x64 terrain canvases.
+  $f1375 reads terrain grid indices as u16 at chunk offsets 2572/2574 and shifts each left by 10.
+  It calls $f586 with x=gridX*1024-1, y=gridY*1024-1, width=height=1026.
+  $f586 emits opcode 35; client.js draws the source canvas with those four rectangle arguments.
+  Grid spacing is therefore 1024 world units; the 1026 drawing rectangle overlaps adjacent chunks.
+  The old assumption drawImage(source,0,0,1,1) is not sufficient for this build.
+  See reports/current-game-layout.json for the exact-hash manifest and runtime-validation status.
+
+Arithmetic neighborhoods touching legacy addresses (bounded excerpts):
+  No direct-address arithmetic neighborhoods matched these reference layouts.
+
+Loader evidence (bounded excerpts):
+  .asm.Lf: (not found)
+  .asm.Mf: turn Ph(a,b,c,d)}};(function(){function a(e){m.asm=e.exports;md=m.asm.Mf;nd=e=md.buffer;m.HEAP8=Y=new Int8Array(e);m.HEAP16=Aa=new Int16Array(e);m.HEAP32=l=new Int32Ar
+  instantiateStreaming: r: "+e),!1}(function(){return Ha||"function"!=typeof WebAssembly.instantiateStreaming|| oc(la)||"function"!=typeof fetch?c(b):fetch(la,{credentials:"same-origin"}).then(function(e
+  client.wasm: fa,vc,Zc=[],Vc=[],Rh=[],Th=[],Xc=[],ua=0,wb=null,Ga=null;var la="client.wasm";oc(la)||(la=zh(la));var G,V,Ec={112832:()=>{document.getElementById("canvas").style.cursor="d
+  Archive wrapper detected: false
+
+Interpretation and next step:
+A sequence such as "48 8D 05 ?? ?? ?? ?? 48 89 01" describes x86 machine code, not portable WASM instructions.
+WASM operands use variable-length LEB128 encoding; address changes can change instruction byte lengths.
+Match decoded opcode structure with captured addresses/local relationships, then require a unique candidate and runtime validation.
+A shared arithmetic sequence alone is not a proof of semantic meaning or a stable cross-version signature.
+Use the archived binary as a labelled reference; compare a current JS/WASM pair before claiming current offsets.
+Validate candidate coordinates against movement, zoom, resize, map origin and map-size observations.
+Never silently choose the first match when zero or multiple candidates remain.

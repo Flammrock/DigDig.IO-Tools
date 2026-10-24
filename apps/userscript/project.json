@@ -1,0 +1,13 @@
+{
+  "name": "userscript",
+  "projectType": "application",
+  "sourceRoot": "apps/userscript/src",
+  "implicitDependencies": ["userscript-webpack-plugin", "dev-server", "terrain"],
+  "targets": {
+    "build": { "command": "node tools/build.mjs", "cache": false },
+    "release-build": { "command": "node tools/build-release-userscript.mjs", "cache": false },
+    "dev": { "command": "node tools/dev.mjs", "continuous": true, "cache": false },
+    "typecheck": { "command": "tsc -p apps/userscript/tsconfig.json" },
+    "test": { "command": "node --test apps/userscript/test/*.test.mjs" }
+  }
+}
