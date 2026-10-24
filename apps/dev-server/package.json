@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "exports": "./src/server.mjs",
-  "dependencies": { "@digdig/layout-resolver": "*" },
+  "dependencies": {
+    "@digdig/layout-resolver": "*"
+  },
   "scripts": {
     "test": "node --test test/*.test.mjs"
   }
