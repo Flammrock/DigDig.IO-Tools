@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.2.2...v2.0.0) (2026-10-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* rebuild the desktop app with Tauri and Nx
+
+### Features
+
+* rebuild the desktop app with Tauri and Nx ([0f37d49](https://github.com/Flammrock/DigDig.IO-Tools/commit/0f37d490301937622dac36f3a45cd2678dea55d7))
+
 ## [1.2.2](https://github.com/Flammrock/DigDig.IO-Tools/compare/v1.2.1...v1.2.2) (2025-08-26)
 
 

@@ -9,6 +9,13 @@
     "web:build": "tsc -p tsconfig.json && vite build",
     "build": "tauri build --no-bundle"
   },
-  "dependencies": { "@digdig/terrain": "*", "@digdig/layout-resolver": "*", "@tauri-apps/api": "2.12.4" },
-  "devDependencies": { "@tauri-apps/cli": "2.12.4", "vite": "8.3.5" }
+  "dependencies": {
+    "@digdig/terrain": "*",
+    "@digdig/layout-resolver": "*",
+    "@tauri-apps/api": "2.12.4"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.4",
+    "vite": "8.3.5"
+  }
 }
